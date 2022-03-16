@@ -5,6 +5,7 @@ import Profil from "./screens/Profil";
 import Loading from "./assets/loading.gif";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useState, useEffect } from "react";
+import Game2 from "./screens/Game2/Game2";
 
 function App() {
   const { isAuthenticated, isLoading } = useAuth0();
@@ -23,8 +24,10 @@ function App() {
   }
   return isAuthenticated ? (
     <div className="App">
-      <Profil />
-      <Routes>{/* <Route path="/" element={<Home />}></Route> */}</Routes>
+      <Routes>
+        <Route path="/" element={<Profil />}></Route>
+        <Route path="/game" element={<Game2 />}></Route>
+      </Routes>
     </div>
   ) : (
     <Home />

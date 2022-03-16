@@ -9,3 +9,6 @@
 .loading {
   width: 20%;
 }
+.App {
+  overflow-y: hidden;
+}

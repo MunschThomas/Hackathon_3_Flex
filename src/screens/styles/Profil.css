@@ -37,6 +37,13 @@
   border-radius: 10px;
 }
 
+.boutonContainer {
+  display: flex;
+  flex-direction: column;
+  height: 10rem;
+  justify-content: space-around;
+}
+
 .boutonPlay {
   font-size: 32px;
   cursor: pointer;
