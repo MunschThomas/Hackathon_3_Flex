@@ -27,9 +27,9 @@ const Profile = () => {
           <div>Fondamentaux</div>
         </div>
         <div className="boutonContainer">
-          <div className="boutonPlay">Reviser</div>
+          <div className="bouton reviser">Reviser</div>
           <Link to="game">
-            <div className="boutonPlay">Jouer</div>
+            <div className="bouton play">Jouer</div>
           </Link>
         </div>
         <div className="logOut">

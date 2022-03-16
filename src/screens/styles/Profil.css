@@ -44,16 +44,13 @@
   justify-content: space-around;
 }
 
-.boutonPlay {
+.bouton {
   font-size: 32px;
   cursor: pointer;
   background-color: var(--green-500);
   border-radius: 10px;
   padding: 0.3em;
   font-size: 32px;
-  cursor: pointer;
-  background-color: var(--green-500);
-  border-radius: 10px;
   width: 11rem;
   display: flex;
   justify-content: center;
@@ -61,12 +58,11 @@
   height: 3rem;
 }
 
-.boutonPlay:nth-of-type(2) {
-  margin-top: 1rem;
-  background-color: var(--blue-500);
+.play {
+  background-color: var(--blue-600);
   color: var(--neutral-50);
 }
 
-.boutonPlay:hover {
+.bouton:hover {
   border: solid 3px var(--blue-300);
 }
