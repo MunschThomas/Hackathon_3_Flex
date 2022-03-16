@@ -1,7 +1,88 @@
-* {
+/* --------------------- */
+/*         Root          */
+/* --------------------- */
+
+:root {
+  /******* colors *******/
+
+  /* --clr-dark: 230 35% 7%; */
+  /* color: hsl(var(--clr-white) / 0.8); */
+  --clr-one: #fff;
+  --clr-two: #fff;
+  --clr-three: #fff;
+
+  /******* font-sizes *******/
+
+  /* --fs-h1: clamp(min, ratio, max); Exemple pour avoir une typo responsive*/
+  /* --fs-h1: clamp(5rem, 8vw + 1rem, 9.375rem); Exemple pour avoir une typo responsive*/
+  /* --fs-h6: clamp(1rem, 4vw + 0.5rem, 3rem); Exemple pour avoir une typo responsive*/
+
+  --fs-h1: 2.5rem;
+  --fs-h2: 2rem;
+  --fs-h3: 1.8rem;
+  --fs-h4: 1.6rem;
+  --fs-body: 1.6rem;
+
+  /******* font-families *******/
+  --ff-body: "A DEFINIR";
+}
+
+/* --------------------- */
+/*         Reset         */
+/* --------------------- */
+
+/******* Box sizing *******/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+}
+
+/******* Body *******/
+body {
+  min-height: 100vh;
+}
+
+/******* Images *******/
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* make form elements easier to work with */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  border: none;
+  outline: none;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+h1,
+h2 {
+  font-weight: normal;
+  margin-block-end: 0;
+  margin-block-start: 0;
 }
 
 body {
