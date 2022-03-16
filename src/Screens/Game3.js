@@ -13,14 +13,13 @@ export default function Game2() {
   // *********** RAJOUTS LETTERS THOM YAN UP*****************
 
   const [letters, setLetters] = useState([]);
-  const [nbLetters, setNbLetters] = useState([]);
   const [idNum, setIdNum] = useState(0);
   const [winLetters, setWinLetters] = useState(false);
 
-  let tableauNumber = ["B", "n", "e", "d", "i", "s"];
   const newTableauNumber = [];
 
   useEffect(() => {
+    let tableauNumber = ["B", "n", "e", "d", "i", "s"];
     for (let i = 0; i < 6; i++) {
       const random = Math.floor(Math.random() * tableauNumber.length);
       const aEnlever = tableauNumber[random];
@@ -37,7 +36,6 @@ export default function Game2() {
   }, [idNum]);
 
   const newLetter = () => {
-    console.log("coucou");
     setIdNum((idNum) => idNum + 1);
   };
 
