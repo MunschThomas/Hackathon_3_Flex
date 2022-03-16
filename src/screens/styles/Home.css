@@ -1,0 +1,37 @@
+.Home {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.buttonConnect {
+  font-size: 30px;
+  width: 100%;
+  cursor: pointer;
+  background-color: var(--green-500);
+  border-radius: 10px;
+  padding: 0.5em;
+}
+
+.buttonConnect:hover {
+  border: solid 5px var(--blue-300);
+}
+
+.imgContainer {
+  position: absolute;
+  top: 1rem;
+  width: 20vw;
+}
+
+@media screen and (max-width: 500px) {
+  .imgContainer {
+    width: 53vw;
+  }
+}

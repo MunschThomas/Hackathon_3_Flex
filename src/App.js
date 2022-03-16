@@ -1,36 +1,37 @@
 import "./App.css";
-import Loader from './Components/Loader.js';
-import { Routes } from "react-router-dom";
-import { useState, useEffect } from 'react'
-
-
-import Game2 from "./Screens/Game2/Game2";
+import { Route, Routes } from "react-router-dom";
+import Home from "./screens/Home";
+import Profil from "./screens/Profil";
+import Loading from "./assets/loading.gif";
+import { useAuth0 } from "@auth0/auth0-react";
+import { useState, useEffect } from "react";
+import Game2 from "./screens/Game2/Game2";
 
 function App() {
-
-  let [isLoaded, setIsLoaded] = useState(true)
+  const { isAuthenticated, isLoading } = useAuth0();
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setTimeout(() => {
-      setIsLoaded(false)
-    }, 0)
-  }, [])
+    setTimeout(() => setLoading(false), 500);
+  }, []);
 
-  return (
-    <>
-      {isLoaded === false ? (
-
+  if (loading) {
+    return (
+      <div className="loadingContainer">
+        <img src={Loading} alt="loading" className="loading"></img>
+      </div>
+    );
+  }
+  return isAuthenticated ? (
     <div className="App">
-      <header className="App-header"></header>
-  
-      <Game2/>
-
-      <Routes></Routes>
-    </div>) : (
-    <Loader />
-    )}
-  </>
-  )
+      <Routes>
+        <Route path="/" element={<Profil />}></Route>
+        <Route path="/game" element={<Game2 />}></Route>
+      </Routes>
+    </div>
+  ) : (
+    <Home />
+  );
 }
 
 export default App;
