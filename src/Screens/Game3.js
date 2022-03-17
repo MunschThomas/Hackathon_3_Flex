@@ -3,10 +3,14 @@ import "./Game2.css";
 import rocks from "../assets/obstacle1.png";
 import tree from "../assets/obstacle2.png";
 import cat from "../assets/obstacle3.png";
+import prise from "../assets/obstacle1_office.png";
+import computer from "../assets/obstacle2_office.png";
+import extincteur from "../assets/obstacle3_office.png";
 import persos from "../assets/persos.png";
+import perso_office from "../assets/persos_office.png";
 import e from "../assets/e.png";
 
-export default function Game2() {
+export default function Game3(props) {
   const decal = window.innerWidth / 4.5;
 
   const [inGame, setIngame] = useState(true);
@@ -21,7 +25,30 @@ export default function Game2() {
   const [isWin, setIsWin] = useState(false); // State victoire !!!
 
   const place = ["left", "middle", "right"]; // Emplacement obstacles ou lettres
-  const obstacle = [rocks, cat, tree, rocks, cat, tree, e]; // Type obstacles
+
+  /// **************
+  /// SELECTION DES OBSTACLES ET PERSO SELON LE CHOIX PRECEDENT
+  /// **************
+
+  const [obstacle, setObstacle] = useState(null);
+  const obstacleRoute = [rocks, cat, tree, rocks, cat, tree, e];
+  const obstacleBureau = [
+    prise,
+    computer,
+    extincteur,
+    prise,
+    computer,
+    extincteur,
+    e,
+  ];
+  useEffect(() => {
+    if (props.chooseGame === 0) {
+      setObstacle(obstacleRoute);
+    } else if (props.chooseGame === 1) {
+      setObstacle(obstacleBureau);
+    }
+  }, []);
+  // const obstacle = [rocks, cat, tree, rocks, cat, tree, e]; // Type obstacles
 
   const newTableauNumber = [];
 
@@ -52,40 +79,44 @@ export default function Game2() {
 
   // USE EFFECT WITH OBSTACLES
   useEffect(() => {
-    let idObs = 0;
-    let randomPos = Math.floor(Math.random() * place.length);
-    let randomObs = Math.floor(Math.random() * obstacle.length);
-    if (!gameOver && !pause) {
-      const interval = setInterval(() => {
-        // console.log("letters", letters);
+    if (obstacle) {
+      let idObs = 0;
 
-        const obs = document.getElementById("obstacle");
-        const object = document.createElement("img");
-        object.setAttribute("src", obstacle[randomObs]);
-        randomObs === 6
-          ? object.setAttribute("alt", "letter")
-          : object.setAttribute("alt", "rocks paper cisor");
-        object.setAttribute(
-          "class",
-          `obstacle ${place[randomPos]} obstacleDOM`
-        );
-        object.setAttribute("id", `obs${idObs}`);
-        obs.appendChild(object);
-        idObs += 1;
+      let randomPos = Math.floor(Math.random() * place.length);
+      let randomObs = Math.floor(Math.random() * obstacle.length);
 
-        randomPos = Math.floor(Math.random() * place.length);
-        randomObs = Math.floor(Math.random() * obstacle.length);
-        // console.log("add", document.getElementById(`obs${idObs}`));
-        // console.log("delete", document.getElementById(`obs${idObs - 1}`));
-        const deletel = document.getElementById(`obs${idObs - 2}`);
+      if (!gameOver && !pause) {
+        const interval = setInterval(() => {
+          // console.log("letters", letters);
 
-        if (idObs !== 0 && idObs !== 1) {
-          obs.removeChild(deletel);
-        }
-      }, 2500);
-      return () => clearInterval(interval);
+          const obs = document.getElementById("obstacle");
+          const object = document.createElement("img");
+          object.setAttribute("src", obstacle[randomObs]);
+          randomObs === 6
+            ? object.setAttribute("alt", "letter")
+            : object.setAttribute("alt", "rocks paper cisor");
+          object.setAttribute(
+            "class",
+            `obstacle ${place[randomPos]} obstacleDOM`
+          );
+          object.setAttribute("id", `obs${idObs}`);
+          obs.appendChild(object);
+          idObs += 1;
+
+          randomPos = Math.floor(Math.random() * place.length);
+          randomObs = Math.floor(Math.random() * obstacle.length);
+          // console.log("add", document.getElementById(`obs${idObs}`));
+          // console.log("delete", document.getElementById(`obs${idObs - 1}`));
+          const deletel = document.getElementById(`obs${idObs - 2}`);
+
+          if (idObs !== 0 && idObs !== 1) {
+            obs.removeChild(deletel);
+          }
+        }, 2500);
+        return () => clearInterval(interval);
+      }
     }
-  }, [gameOver, pause]);
+  }, [gameOver, pause, obstacle]);
 
   // USE EFFECT WITH LETTERS !!!!
   // useEffect(() => {
@@ -268,12 +299,23 @@ export default function Game2() {
 
   return (
     <>
-      <div id="test" className="containerGrille">
+      <div
+        id="test"
+        className="containerGrille"
+        style={{
+          backgroundColor: props.chooseGame === 0 ? "#91c574" : "#D8C4B6",
+        }}
+      >
         <div
           className="grille"
           id="road"
           tabIndex="0"
           onKeyDown={(e) => setMove(e)}
+          style={{
+            backgroundImage: `url(${
+              props.chooseGame === 0 ? props.routeFina : props.routeOffice
+            })`,
+          }}
         >
           {/* // *********** CLARA TOUCH SCREEN******************/}
           {/* <div id='grilleLeft'></div>
@@ -291,7 +333,12 @@ export default function Game2() {
           )}
 
           {/* // *********** RAJOUTS THOM YAN DOWN******************/}
-          <img src={persos} id="car" alt="perso" className="perso" />
+          <img
+            src={props.chooseGame === 0 ? persos : perso_office}
+            id="car"
+            alt="perso"
+            className="perso"
+          />
           {!pause && <div id="obstacle"></div>}
         </div>
         {gameOver && (

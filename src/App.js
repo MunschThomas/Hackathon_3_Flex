@@ -1,19 +1,22 @@
 import "./App.css";
 
 import { Route, Routes } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useAuth0 } from "@auth0/auth0-react";
 import Home from "./screens/Home";
 import Profil from "./screens/Profil";
-import Loading from "./assets/loading.gif";
-import { useAuth0 } from "@auth0/auth0-react";
-import { useState, useEffect } from "react";
 import Game2 from "./screens/Game2";
 import Game3 from "./screens/Game3";
+import Loading from "./assets/loading.gif";
+import routeFina from "./assets/routeFina.png";
+import routeOffice from "./assets/routeOffice.png";
 
 function App() {
   const [loading, setLoading] = useState(true);
   const { user, isLoading, isAuthenticated } = useAuth0();
   const [score, setScore] = useState(0);
   const [chooseGame, setChooseGame] = useState();
+
   useEffect(() => {
     setTimeout(() => setLoading(false), 500);
   }, []);
@@ -57,7 +60,15 @@ function App() {
         ></Route>
         <Route
           path="/game3"
-          element={<Game3 chooseGame={chooseGame} />}
+          element={
+            <Game3
+              score={score}
+              setScore={setScore}
+              chooseGame={chooseGame}
+              routeOffice={routeOffice}
+              routeFina={routeFina}
+            />
+          }
         ></Route>
       </Routes>
     </div>
