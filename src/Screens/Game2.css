@@ -21,11 +21,28 @@
   height: 100vh;
   margin: 0 auto;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-  background: url("../assets/routeMob.png");
+  background: url('../assets/routeFina.png');
   /* background-size: cover; */
   background-position: center;
   background-repeat-x: no-repeat;
-  /* animation: background-defile 3s linear infinite forwards; */
+  animation: background-defile 3s linear infinite forwards;
+}
+
+#grilleLeft {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 45%;
+  height: 50%;
+  background-color: #000;
+}
+#grilleRight {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 45%;
+  height: 50%;
+  background-color: #000;
 }
 
 .perso {
@@ -35,17 +52,24 @@
   height: auto;
   bottom: 20px;
   left: 50%;
+  transform-origin: 50% 50%;
+  /* transform: rotate(360deg); */
   transform: translateX(-50%);
+  transition: transform 400ms;
   z-index: 5;
 }
 
 .obstacle {
   position: absolute;
-  width: 5% !important;
-  /* min-width: 100px; */
-  height: auto;
-  animation: obstacle-defile 2500ms linear forwards;
+  height: 75px;
+  width: auto;
+  min-width: 100px;
+  animation: obstacle-defile 2500ms linear infinite;
 }
+
+/* .obstacle:nth-of-type(2) {
+    width: 3vw;
+} */
 
 .left {
   left: 35%;
@@ -61,15 +85,6 @@
   transform: translateX(-50%);
 }
 
-@keyframes background-defile {
-  from {
-    background-position-y: 0;
-  }
-  to {
-    background-position-y: 1445px;
-  }
-}
-
 @keyframes obstacle-defile {
   from {
     top: -500px;
@@ -77,4 +92,13 @@
   to {
     top: 100vh;
   }
+}
+
+/*  Modale GameOver */
+.gameOver {
+  position: absolute;
+  z-index: 200;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }

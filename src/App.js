@@ -1,12 +1,11 @@
 import "./App.css";
 
 import { Route, Routes } from "react-router-dom";
+import Home from "./screens/Home";
+import Profil from "./screens/Profil";
+import Loading from "./assets/loading.gif";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useState, useEffect } from "react";
-
-import Loading from "./assets/loading.gif";
-import Profil from "./screens/Profil";
-import Home from "./screens/Home";
 import Game2 from "./screens/Game2";
 import Game3 from "./screens/Game3";
 
@@ -15,7 +14,6 @@ function App() {
   const { user, isLoading, isAuthenticated } = useAuth0();
   const [score, setScore] = useState(0);
   const [chooseGame, setChooseGame] = useState();
-
   useEffect(() => {
     setTimeout(() => setLoading(false), 500);
   }, []);
