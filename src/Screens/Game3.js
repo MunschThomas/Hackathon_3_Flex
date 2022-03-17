@@ -203,7 +203,6 @@ export default function Game3(props) {
               (carX === 0 && place === "middle") ||
               (carX === 1 && place === "right")
             ) {
-              console.log("lllllllleeeeeeeeeeeeeeeeeeeeeetttttttttttttttttree");
               setPause(true);
             }
           } else if (
@@ -228,7 +227,6 @@ export default function Game3(props) {
 
   // Déplacement voiture
   const setMove = (e) => {
-    console.log("keyboardEvent", e);
     let car = document.getElementById("car");
 
     if (e.key === "ArrowLeft" && carPos >= 0) {
@@ -258,10 +256,6 @@ export default function Game3(props) {
       // car.style.transform = `translateX(calc(${carPos + decal}px - 50%))`;
     }
   };
-
-  useEffect(() => {
-    console.log(document.getElementById("car").getBoundingClientRect());
-  }, [carPos]);
 
   // ANIMATION DU BACKGROUND et OBSTACLE
 
