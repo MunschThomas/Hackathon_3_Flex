@@ -5,7 +5,7 @@ import tree from "../../assets/obstacle2.png";
 import cat from "../../assets/obstacle3.png";
 import persos from "../../assets/persos.png";
 
-export default function Game2() {
+export default function Game2(props) {
   const decal = window.innerWidth / 4.5;
 
   const [inGame, setIngame] = useState(true);
@@ -31,34 +31,42 @@ export default function Game2() {
     }
   };
 
+  useEffect(() => {
+    console.log(document.getElementById("car").getBoundingClientRect());
+  }, []);
 
-  useEffect(()=>{
-  console.log(document.getElementById("car").getBoundingClientRect());
+  //  useEffect(()=> {
 
-  }, [])
+  //    let road = document.getElementById('road').animate(
+  //      [{
+  //        backgroundPositionY: 0
+  //      },{
+  //        backgroundPositionY:100
+  //      }],
+  //      {duration: 3000,
+  //    ease: "linear",
+  //    iterations: Infinity
+  //    }
 
-//  useEffect(()=> {
-   
-//    let road = document.getElementById('road').animate(
-//      [{
-//        backgroundPositionY: 0
-//      },{
-//        backgroundPositionY:100
-//      }],
-//      {duration: 3000,
-//    ease: "linear",
-//    iterations: Infinity
-//    }
- 
-//    )
-//  }
-//  , [])
+  //    )
+  //  }
+  //  , [])
+
+  let newScore = props.score;
 
   return (
     <>
       <div className="containerGrille">
-        
-        <div className="grille" id="road" tabIndex="0" onKeyDown={(e) => setMove(e)}>
+        <div
+          className="grille"
+          id="road"
+          tabIndex="0"
+          onKeyDown={(e) => setMove(e)}
+        >
+          <div onClick={(e) => props.setScore((newScore) => newScore + 1)}>
+            Clique ici
+          </div>
+
           <img src={persos} id="car" alt="perso" className="perso" />
           {inGame && (
             <div>
