@@ -71,7 +71,19 @@ function App() {
           element={<Game2 score={score} setScore={setScore} />}
         ></Route> */}
         <Route
-          path="/Profil/game3"
+          path="Profil/game3"
+          element={
+            <Game3
+              score={score}
+              setScore={setScore}
+              chooseGame={chooseGame}
+              routeOffice={routeOffice}
+              routeFina={routeFina}
+            />
+          }
+        ></Route>
+        <Route
+          path="game3"
           element={
             <Game3
               score={score}
