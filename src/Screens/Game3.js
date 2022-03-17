@@ -273,8 +273,8 @@ export default function Game2() {
           onKeyDown={(e) => setMove(e)}
         >
           {/* // *********** CLARA TOUCH SCREEN******************/}
-          <div id='grilleLeft'></div>
-          <div id='grilleRight'></div>
+          {/* <div id='grilleLeft'></div>
+          <div id='grilleRight'></div> */}
 
           {/* // *********** RAJOUTS THOM YAN UP******************/}
           {/* {letters && letters[idNum]} */}
