@@ -16,6 +16,10 @@ export default function Game2(props) {
   const obstacle = [rocks, cat, tree];
 
   const [carPos, setCarPos] = useState(0);
+  const [carX, setCarX] = useState(0);
+
+  const [obstacles, setObstacles] = useState([]); //Récup les obstacles
+  const [isLoading, setIsLoading] = useState(false);
 
   const setMove = (e) => {
     console.log("keyboardEvent", e);
@@ -25,34 +29,55 @@ export default function Game2(props) {
       car.style.transform = `translateX(calc(${carPos - decal}px - 50%))`;
       // setCarPos((carPos) => carPos - decal);
       setCarPos((carPos) => carPos - decal);
+      setCarX((carX) => carX - 1);
     }
     if (e.key === "ArrowRight" && carPos <= 0) {
       // car.style.transform = `translateX(${carPos + 150}px)`;
       car.style.transform = `translateX(calc(${carPos + decal}px - 50%))`;
       setCarPos((carPos) => carPos + decal);
+      setCarX((carX) => carX + 1);
     }
   };
 
+  const [obstY, setobstY] = useState(-100);
+  const [carY, setcarY] = useState(0);
+
   useEffect(() => {
-    console.log(document.getElementById("car").getBoundingClientRect());
+    setIsLoading(true);
   }, []);
 
-  //  useEffect(()=> {
+  useEffect(() => {
+    isLoading &&
+      setcarY(document.getElementById("car").getBoundingClientRect().bottom);
+  }, [isLoading]);
 
-  //    let road = document.getElementById('road').animate(
-  //      [{
-  //        backgroundPositionY: 0
-  //      },{
-  //        backgroundPositionY:100
-  //      }],
-  //      {duration: 3000,
-  //    ease: "linear",
-  //    iterations: Infinity
-  //    }
+  useEffect(() => {
+    const int = setInterval(() => {
+      setobstY(document.getElementById("cat").getBoundingClientRect());
+      if (obstY.bottom > carY - 150) {
+        if (
+          carX === -1 &&
+          document.getElementById("cat").className.split(" ")[1] === "left"
+        ) {
+          setIngame(false);
+        }
+        if (
+          carX === 0 &&
+          document.getElementById("cat").className.split(" ")[1] === "middle"
+        ) {
+          setIngame(false);
+        }
+        if (
+          carX === 1 &&
+          document.getElementById("cat").className.split(" ")[1] === "right"
+        ) {
+          setIngame(false);
+        }
+      }
+    }, 10);
 
-  //    )
-  //  }
-  //  , [])
+    return () => clearInterval(int);
+  }, [obstY]);
 
   //********************************* */
   //********************************* */
@@ -95,6 +120,7 @@ export default function Game2(props) {
                 className={`obstacle ${place[0]}`}
               />
               <img
+                id="cat"
                 src={obstacle[1]}
                 alt="cat"
                 className={`obstacle ${place[1]}`}
