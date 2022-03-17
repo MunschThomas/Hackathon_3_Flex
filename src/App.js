@@ -8,7 +8,7 @@ import { useState, useEffect } from "react";
 import Game2 from "./screens/Game2/Game2";
 
 function App() {
-  const { isAuthenticated, isLoading } = useAuth0();
+  const { isAuthenticated } = useAuth0();
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {

@@ -23,7 +23,7 @@ const Profile = () => {
       <p>{user.email}</p> */}
         <p className="profilName">{user.name}</p>
         <div className="scoreContainer">
-          <div className="circleBorder">0</div>
+          <div className="circleBorder">{console.log(user)}</div>
           <div>Fondamentaux</div>
         </div>
         <div className="boutonContainer">
