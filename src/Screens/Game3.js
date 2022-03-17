@@ -146,10 +146,7 @@ export default function Game2() {
 
     if (!gameOver && !pause) {
       const int = setInterval(() => {
-        console.log(
-          document.getElementsByClassName("obstacle")[0].getAttribute("alt")
-        );
-
+   
         let place = document
           .getElementsByClassName("obstacle")[0]
           .className.split(" ")[1];
