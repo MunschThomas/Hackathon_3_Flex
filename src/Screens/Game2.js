@@ -49,8 +49,6 @@ export default function Game2() {
       setcarY(document.getElementById("car").getBoundingClientRect().bottom);
   }, [isLoading]);
 
-
-
   useEffect(() => {
     const int = setInterval(() => {
       setobstY(document.getElementById("cat").getBoundingClientRect());
@@ -79,8 +77,6 @@ export default function Game2() {
     return () => clearInterval(int);
   }, [obstY]);
 
-
-
   return (
     <>
       <div className="containerGrille">
@@ -95,13 +91,11 @@ export default function Game2() {
             <div>
               <img
                 src={obstacle[0]}
-              
                 alt="rocks"
                 className={`obstacle ${place[0]}`}
               />
               <img
                 id="cat"
-               
                 src={obstacle[1]}
                 alt="cat"
                 className={`obstacle ${place[1]}`}
