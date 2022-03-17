@@ -4,9 +4,11 @@ import rocks from "../assets/obstacle1.png";
 import tree from "../assets/obstacle2.png";
 import cat from "../assets/obstacle3.png";
 import persos from "../assets/persos.png";
+import { useAuth0 } from "@auth0/auth0-react";
 
-export default function Game2() {
+export default function Game2(props) {
   const decal = window.innerWidth / 4.5;
+  const { user } = useAuth0();
 
   const [inGame, setIngame] = useState(true);
 
@@ -52,6 +54,27 @@ export default function Game2() {
   //  }
   //  , [])
 
+  //********************************* */
+  //********************************* */
+  //********************************* */
+  //********************************* */
+  // ************A RAJOUTER POUR LE GAIN DE POINT **********
+
+  let gainDePoint = () => {
+    let oldScore = localStorage.getItem(user.name);
+    let newScore = oldScore * 1 + 1;
+    localStorage.setItem(user.name, newScore);
+  };
+
+  //********************************* */
+  //********************************* */
+  //********************************* */
+  //********************************* */
+  //********************************* */
+  //********************************* */
+  //********************************* */
+  //********************************* */
+
   return (
     <>
       <div className="containerGrille">
@@ -61,6 +84,8 @@ export default function Game2() {
           tabIndex="0"
           onKeyDown={(e) => setMove(e)}
         >
+          <div onClick={() => gainDePoint()}>Clique ici</div>
+
           <img src={persos} id="car" alt="perso" className="perso" />
           {inGame && (
             <div>
