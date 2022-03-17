@@ -71,11 +71,11 @@ const Profile = (props) => {
         </div>
         <div className="boutonContainer">
           <div className="bouton reviser">Reviser</div>
-          <Link to="game">
-            <div className="bouton play">Jouer</div>
+          <Link to="game3" onClick={() => props.setChooseGame(0)}>
+            <div className="bouton play">Jouer Route</div>
           </Link>
-          <Link to="game3">
-            <div className="bouton play">Jouer TEST</div>
+          <Link to="game3" onClick={() => props.setChooseGame(1)}>
+            <div className="bouton play">Jouer Bureau</div>
           </Link>
         </div>
         <div className="logOut">

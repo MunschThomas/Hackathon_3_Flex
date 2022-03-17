@@ -5,7 +5,7 @@ import tree from "../assets/obstacle2.png";
 import cat from "../assets/obstacle3.png";
 import persos from "../assets/persos.png";
 
-export default function Game2() {
+export default function Game2(props) {
   const decal = window.innerWidth / 4.5;
 
   const [inGame, setIngame] = useState(true);
@@ -20,6 +20,7 @@ export default function Game2() {
   const newTableauNumber = [];
 
   useEffect(() => {
+    console.log("quel jeu", props.chooseGame);
     let tableauNumber = [persos, persos, persos, persos, persos, persos];
     for (let i = 0; i < 6; i++) {
       const random = Math.floor(Math.random() * tableauNumber.length);
