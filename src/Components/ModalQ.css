@@ -6,9 +6,9 @@
   justify-content: space-evenly;
 }
 
-.AnswerButton button {
+button {
   padding: 10px;
-  min-width: 100px;
+  min-width: 160px;
   border-radius: 50px;
   border: 5px solid transparent;
   cursor: pointer;
@@ -18,9 +18,11 @@
   border: 5px solid green;
 }
 .wrapper {
+  z-index: 5000000;
+  position: absolute;
   width: 100vw;
   height: 100vh;
-  background-color: hsla(0, 0%, 0%, 0.8);
+  background-color: #c8cbd0b0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -49,3 +51,7 @@
   visibility: hidden;
   color: white;
 }
+
+
+.visible {visibility: visible;}
+.hidden {visibility: hidden;}

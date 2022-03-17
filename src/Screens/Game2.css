@@ -13,11 +13,24 @@
   overflow-y: hidden;
 }
 
+.enedisContainer{position: absolute; top: 20px; z-index:520000; left:50%; transform:translateX(-50%) } 
+
+.letterDetails {width:150px; height: 50px; display: flex;}
+.letterDetails:nth-child() {
+  opacity: 0.5;
+}
+
+ 
+.cls-2, .cls-1 {fill: #c8cbd0;} 
+
+.cls-3{fill: var(--blue-500);}  
+.cls-4 {fill: var(--green-500);} 
 .grille {
   display: flex;
   flex-wrap: wrap;
   border: 1px solid #000;
   width: auto;
+  /* max-width: 600px; */
   height: 100vh;
   margin: 0 auto;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
@@ -57,23 +70,33 @@
   /* transform: rotate(360deg); */
   transform: translateX(-50%);
   transition: transform 400ms;
-  z-index: 5;
-}
-
-.obstacle {
-  position: absolute;
-  height: 75px;
-  width: auto;
-  min-width: 100px;
-  animation: obstacle-defile 2500ms linear infinite;
+  z-index: 1;
 }
 
 /* .obstacle:nth-of-type(2) {
     width: 3vw;
 } */
+/* #obstacle{
+    width: 708px;
+    position: relative;
+} */
+
+.obstacleBox{
+    position: relative;
+    width: 708px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.obstacle {
+  position: absolute;
+  width: 120px;
+  height: auto;
+  min-width: 100px;
+  animation: obstacle-defile 2500ms linear infinite;
+}
 
 .left {
-  left: 35%;
+  left: 18%;
   transform: translateX(-50%);
   /* transition-delay: 5s; */
 }
@@ -82,7 +105,7 @@
   transform: translateX(-50%);
 }
 .right {
-  left: 67%;
+  left:85%;
   transform: translateX(-50%);
 }
 
@@ -96,10 +119,61 @@
 }
 
 /*  Modale GameOver */
+.overlay {
+ position: absolute;
+ z-index: 2;
+ top:0;
+ bottom: 0;
+ left: 0;
+ right: 0;
+ background-color: hsl(217.5,7.8%,80% , .8);
+}
+
+
 .gameOver {
   position: absolute;
+  display: flex;
+  flex-direction: column;
   z-index: 200;
-  top: 40%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  gap: 10px
+}
+
+.gameOver p {
+    font-size: 30px;
+    color: #fff;
+    border-radius: 7px;
+    padding: 20px 20px;
+    background-color: var(--blue-500);
+}
+
+.gameOver button {
+  border-radius: 7px;
+  padding: 20px 10px
+}
+
+.gameOver button:hover {
+  background-color: var(--blue-300);
+  cursor:pointer;
+}
+
+.gameWin{
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  z-index: 200;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  gap: 10px;
+  min-height: 350px;
+  text-align: center;
+  color: #fff;
+  border-radius: 7px;
+  padding: 20px 20px;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: var(--blue-500);
 }
