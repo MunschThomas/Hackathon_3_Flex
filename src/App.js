@@ -55,11 +55,23 @@ function App() {
           }
         ></Route>
         <Route
-          path="/game"
-          element={<Game2 score={score} setScore={setScore} />}
+          path="/Profil"
+          element={
+            <Profil
+              score={score}
+              setScore={setScore}
+              isLoading={isLoading}
+              user={user}
+              setChooseGame={setChooseGame}
+            />
+          }
         ></Route>
-        <Route
+        {/* <Route
           path="/game3"
+          element={<Game2 score={score} setScore={setScore} />}
+        ></Route> */}
+        <Route
+          path="/Profil/game3"
           element={
             <Game3
               score={score}
@@ -74,7 +86,9 @@ function App() {
     </div>
   ) : (
     <>
-      <Home />
+      <Routes>
+        <Route path="/" element={<Home />}></Route>
+      </Routes>
     </>
   );
 }

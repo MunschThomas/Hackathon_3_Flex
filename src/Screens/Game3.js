@@ -9,6 +9,7 @@ import extincteur from "../assets/obstacle3_office.png";
 import persos from "../assets/persos.png";
 import perso_office from "../assets/persos_office.png";
 import e from "../assets/e.png";
+import { Link } from "react-router-dom";
 
 export default function Game3(props) {
   const decal = window.innerWidth / 4.5;
@@ -317,6 +318,13 @@ export default function Game3(props) {
 
           {/* // *********** RAJOUTS THOM YAN UP******************/}
           {/* {letters && letters[idNum]} */}
+
+          {/* BOUTON REDIRECTION MENU PROFIL A GARDER */}
+          <Link to="../Profil">
+            <div>Retour au profil</div>
+          </Link>
+          {/* BOUTON REDIRECTION MENU PROFIL A GARDER */}
+
           {!gameOver ? (
             <>
               <div onClick={() => newLetter()}>CLIQUE ICI</div>

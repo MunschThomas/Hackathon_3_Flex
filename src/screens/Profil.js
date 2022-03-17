@@ -23,17 +23,21 @@ const Profile = (props) => {
   return (
     <>
       <div className="holderContainer">
-        <div className="imgContainer">
+        <div className="imgContainerProfil">
           <img src={Logo} alt="logo Enedis"></img>
+          <div className="logOut">
+            <Logout />
+          </div>
+          <div className="infoContainer">
+            <img src={props.user.picture} alt={props.user.name}></img>
+            <p className="profilName">{props.user.name}</p>
+          </div>
         </div>
         {/* <img src={user.picture} alt={user.name} />
         <h2>{user.name}</h2>
       <p>{user.email}</p> */}
-        <div className="infoContainer">
-          <img src={props.user.picture} alt={props.user.name}></img>
-          <p className="profilName">{props.user.name}</p>
-        </div>
         <div className="holderScoreContainer">
+          {/* <h2>Votre score</h2> */}
           <div className="scoreContainer">
             <FontAwesomeIcon
               icon={faTrophy}
@@ -49,37 +53,81 @@ const Profile = (props) => {
             />
             <FontAwesomeIcon
               icon={faTrophy}
-              size="4x"
+              size="3x"
               color="var(--neutral-600)"
               className={totalScore >= 3 ? "winIcon" : ""}
             />
             <FontAwesomeIcon
               icon={faTrophy}
-              size="4x"
+              size="3x"
               color="var(--neutral-600)"
               className={totalScore >= 4 ? "winIcon" : ""}
             />
             <FontAwesomeIcon
               icon={faTrophy}
-              size="5x"
+              size="3x"
               color="var(--neutral-600)"
               className={totalScore >= 5 ? "winIcon" : ""}
             />
+            <FontAwesomeIcon
+              icon={faTrophy}
+              size="3x"
+              color="var(--neutral-600)"
+              className={totalScore >= 6 ? "winIcon" : ""}
+            />
+            <FontAwesomeIcon
+              icon={faTrophy}
+              size="3x"
+              color="var(--neutral-600)"
+              className={totalScore >= 7 ? "winIcon" : ""}
+            />
+            <FontAwesomeIcon
+              icon={faTrophy}
+              size="3x"
+              color="var(--neutral-600)"
+              className={totalScore >= 8 ? "winIcon" : ""}
+            />
             {/* <div className="circleBorder"></div> */}
           </div>
-          <div>{totalScore} Fondamentaux</div>
+          {totalScore === "8" ? (
+            <h3>Felicitations ! Vous avez débloquer les 8 Fondamentaux</h3>
+          ) : (
+            <h3>Vous avez débloquez {totalScore} fondamentaux!</h3>
+          )}
+          {/* <div>Debloquez les 8 fondamenteux</div> */}
         </div>
         <div className="boutonContainer">
-          <div className="bouton reviser">Reviser</div>
           <Link to="game3" onClick={() => props.setChooseGame(0)}>
-            <div className="bouton play">Jouer Route</div>
+            <div className="boutonPlay">
+              <div className="playRoute"></div>
+              <h3>Jouer</h3>
+              <h3>en déplacement</h3>
+              <p>
+                Décors routier, évitez les obstacles, et récuperer les lettres
+                ENEDIS afin d'accedez aux questions du quiz
+              </p>
+            </div>
           </Link>
+          <div className="boutonPlay">
+            <div className="playReviser"></div>
+            <h3>Revisez</h3>
+            {/* <h3>les fondamentaux</h3> */}
+            <p>
+              Accedez au quiz avec des questions aléatoires pour s'entrainer
+            </p>
+          </div>
+
           <Link to="game3" onClick={() => props.setChooseGame(1)}>
-            <div className="bouton play">Jouer Bureau</div>
+            <div className="boutonPlay">
+              <div className="playBureau"></div>
+              <h3>Jouer</h3>
+              <h3>au bureau</h3>
+              <p>
+                Décors de bureau, évitez les obstacles, et récuperer les lettres
+                ENEDIS afin d'accedez aux questions du quiz
+              </p>
+            </div>
           </Link>
-        </div>
-        <div className="logOut">
-          <Logout />
         </div>
       </div>
     </>
