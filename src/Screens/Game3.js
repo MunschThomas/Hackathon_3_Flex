@@ -43,43 +43,43 @@ export default function Game2() {
   // *********** RAJOUTS OBSTACLES ALEATOIRES THOM YAN UP*****************
 
   // USE EFFECT WITH OBSTACLES
-  useEffect(() => {
-    let idObs = 0;
-    let randomPos = Math.floor(Math.random() * place.length);
-    let randomObs = Math.floor(Math.random() * obstacle.length);
-    if (!winLetters && !pause) {
-      const interval = setInterval(() => {
-        console.log("letters", letters);
-        const obs = document.getElementById("obstacle");
-        const object = document.createElement("img");
-        object.setAttribute("src", obstacle[randomObs]);
-        object.setAttribute("alt", "rocks paper cisor");
-        object.setAttribute(
-          "class",
-          `obstacle ${place[randomPos]} obstacleDOM`
-        );
-        object.setAttribute("id", `obs${idObs}`);
-        obs.appendChild(object);
-        idObs += 1;
-        randomPos = Math.floor(Math.random() * place.length);
-        randomObs = Math.floor(Math.random() * obstacle.length);
-        // console.log("add", document.getElementById(`obs${idObs}`));
-        // console.log("delete", document.getElementById(`obs${idObs - 1}`));
-        const deletel = document.getElementById(`obs${idObs - 2}`);
-        if (idObs !== 0 && idObs !== 1) {
-          obs.removeChild(deletel);
-        }
-      }, 3500);
-      return () => clearInterval(interval);
-    }
-  }, [winLetters, pause]);
+  // useEffect(() => {
+  //   let idObs = 0;
+  //   let randomPos = Math.floor(Math.random() * place.length);
+  //   let randomObs = Math.floor(Math.random() * obstacle.length);
+  //   if (!winLetters && !pause) {
+  //     const interval = setInterval(() => {
+  //       console.log("letters", letters);
+  //       const obs = document.getElementById("obstacle");
+  //       const object = document.createElement("img");
+  //       object.setAttribute("src", obstacle[randomObs]);
+  //       object.setAttribute("alt", "rocks paper cisor");
+  //       object.setAttribute(
+  //         "class",
+  //         `obstacle ${place[randomPos]} obstacleDOM`
+  //       );
+  //       object.setAttribute("id", `obs${idObs}`);
+  //       obs.appendChild(object);
+  //       idObs += 1;
+  //       randomPos = Math.floor(Math.random() * place.length);
+  //       randomObs = Math.floor(Math.random() * obstacle.length);
+  //       // console.log("add", document.getElementById(`obs${idObs}`));
+  //       // console.log("delete", document.getElementById(`obs${idObs - 1}`));
+  //       const deletel = document.getElementById(`obs${idObs - 2}`);
+  //       if (idObs !== 0 && idObs !== 1) {
+  //         obs.removeChild(deletel);
+  //       }
+  //     }, 2500);
+  //     return () => clearInterval(interval);
+  //   }
+  // }, [winLetters, pause]);
 
   // USE EFFECT WITH LETTERS !!!!
   useEffect(() => {
     let idObs = 0;
-    let randomPos = Math.floor(Math.random() * place.length);
-    let randomLetter = Math.floor(Math.random() * letters.length);
-    if (letters.length !== 0 && !winLetters && !pause) {
+    if (!winLetters && !pause) {
+      let randomPos = Math.floor(Math.random() * place.length);
+      let randomLetter = Math.floor(Math.random() * letters.length);
       const interval = setInterval(() => {
         const obs = document.getElementById("obstacle");
         const object = document.createElement("img");
@@ -96,11 +96,11 @@ export default function Game2() {
         randomLetter = Math.floor(Math.random() * letters.length);
         // console.log("add", document.getElementById(`obs${idObs}`));
         // console.log("delete", document.getElementById(`obs${idObs - 1}`));
-        const deletel = document.getElementById(`obs${idObs - 2}`);
+        const deletel = document.getElementById(`obs${idObs - 4}`);
         if (idObs !== 0 && idObs !== 1) {
           obs.removeChild(deletel);
         }
-      }, 3500);
+      }, 1700);
       return () => clearInterval(interval);
     }
   }, [winLetters, pause, letters]);
