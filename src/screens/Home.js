@@ -1,5 +1,5 @@
 import React from "react";
-import Login from "../Components/Login";
+import Login from "../components/Login";
 import "./styles/Home.css";
 import background from "../assets/HomeBG.jpeg";
 import Logo from "../assets/logo_white.png";
