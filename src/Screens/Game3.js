@@ -4,6 +4,7 @@ import rocks from "../assets/obstacle1.png";
 import tree from "../assets/obstacle2.png";
 import cat from "../assets/obstacle3.png";
 import persos from "../assets/persos.png";
+import e from "../assets/e.png";
 
 export default function Game2() {
   const decal = window.innerWidth / 4.5;
@@ -14,8 +15,13 @@ export default function Game2() {
 
   const [letters, setLetters] = useState([]);
   const [idNum, setIdNum] = useState(0);
-  const [winLetters, setWinLetters] = useState(false);
-  const [pause, setPause] = useState(false);
+
+  const [gameOver, setGameOver] = useState(false); // State Colision
+  const [pause, setPause] = useState(false); // State Pause ou lettre
+  const [isWin, setIsWin] = useState(false); // State victoire !!!
+
+  const place = ["left", "middle", "right"]; // Emplacement obstacles ou lettres
+  const obstacle = [rocks, cat, tree, rocks, cat, tree, e]; // Type obstacles
 
   const newTableauNumber = [];
 
@@ -32,7 +38,7 @@ export default function Game2() {
 
   useEffect(() => {
     if (idNum === 6) {
-      setWinLetters(true);
+      setGameOver(true);
     }
   }, [idNum]);
 
@@ -49,13 +55,16 @@ export default function Game2() {
     let idObs = 0;
     let randomPos = Math.floor(Math.random() * place.length);
     let randomObs = Math.floor(Math.random() * obstacle.length);
-    if (!winLetters && !pause) {
+    if (!gameOver && !pause) {
       const interval = setInterval(() => {
         // console.log("letters", letters);
+
         const obs = document.getElementById("obstacle");
         const object = document.createElement("img");
         object.setAttribute("src", obstacle[randomObs]);
-        object.setAttribute("alt", "rocks paper cisor");
+        randomObs === 6
+          ? object.setAttribute("alt", "letter")
+          : object.setAttribute("alt", "rocks paper cisor");
         object.setAttribute(
           "class",
           `obstacle ${place[randomPos]} obstacleDOM`
@@ -76,12 +85,12 @@ export default function Game2() {
       }, 2500);
       return () => clearInterval(interval);
     }
-  }, [winLetters, pause]);
+  }, [gameOver, pause]);
 
   // USE EFFECT WITH LETTERS !!!!
   // useEffect(() => {
   //   let idObs = 0;
-  //   if (!winLetters && !pause) {
+  //   if (!gameOver && !pause) {
   //     let randomPos = Math.floor(Math.random() * place.length);
   //     let randomLetter = Math.floor(Math.random() * letters.length);
   //     const interval = setInterval(() => {
@@ -107,13 +116,10 @@ export default function Game2() {
   //     }, 1700);
   //     return () => clearInterval(interval);
   //   }
-  // }, [winLetters, pause, letters]);
+  // }, [gameOver, pause, letters]);
 
   // *********** RAJOUTS THOM YAN DOWN*****************
   const [isLoading, setIsLoading] = useState(false);
-
-  const place = ["left", "middle", "right"];
-  const obstacle = [rocks, cat, tree];
 
   const [carPos, setCarPos] = useState(0);
 
@@ -138,18 +144,16 @@ export default function Game2() {
   useEffect(() => {
     let newId = 0;
 
-    if (!winLetters && !pause) {
+    if (!gameOver && !pause) {
       const int = setInterval(() => {
-        // console.log(
-        //   document.getElementById(`obs${newId}`).className.split(" ")[1]
-        // );
-        // console.log("classname", document.getElementById(`obs${newId}`));
-        // console.log("classname", document.getElementsByClassName("obstacle")[0]);
-        // console.log(
-        //   "eeferfe",
-        //   document.getElementById(`obs${newId}`).getBoundingClientRect()[0]
-        // );
-        // setobstY(document.getElementById(`obs${newId}`).getBoundingClientRect());
+        console.log(
+          document.getElementsByClassName("obstacle")[0].getAttribute("alt")
+        );
+
+        let place = document
+          .getElementsByClassName("obstacle")[0]
+          .className.split(" ")[1];
+
         setobstY(
           document.getElementsByClassName("obstacle")[0].getBoundingClientRect()
         );
@@ -157,29 +161,26 @@ export default function Game2() {
           document.getElementsByClassName("obstacle")[0].className.split(" ")[1]
         );
         if (obstY.bottom > carY - 150 && obstY.bottom < carY + 20) {
+          //Check lettre
           if (
-            carX === -1 &&
             document
               .getElementsByClassName("obstacle")[0]
-              .className.split(" ")[1] === "left"
+              .getAttribute("alt") === "letter"
           ) {
-            setIngame(false);
-          }
-          if (
-            carX === 0 &&
-            document
-              .getElementsByClassName("obstacle")[0]
-              .className.split(" ")[1] === "middle"
+            if (
+              (carX === -1 && place === "left") ||
+              (carX === 0 && place === "middle") ||
+              (carX === 1 && place === "right")
+            ) {
+              console.log("lllllllleeeeeeeeeeeeeeeeeeeeeetttttttttttttttttree");
+              setPause(true);
+            }
+          } else if (
+            (carX === -1 && place === "left") ||
+            (carX === 0 && place === "middle") ||
+            (carX === 1 && place === "right")
           ) {
-            setIngame(false);
-          }
-          if (
-            carX === 1 &&
-            document
-              .getElementsByClassName("obstacle")[0]
-              .className.split(" ")[1] === "right"
-          ) {
-            setIngame(false);
+            setGameOver(true);
           }
         }
       }, 10);
@@ -233,38 +234,6 @@ export default function Game2() {
 
   // ANIMATION DU BACKGROUND et OBSTACLE
 
-  // let road = () => {
-  //   document.getElementById("road").animate(
-  //     [
-  //       {
-  //         backgroundPositionY: 0,
-  //       },
-  //       {
-  //         backgroundPositionY: "1445px",
-  //       },
-  //     ],
-  //     {
-  //       duration: 3000,
-  //       ease: "linear",
-  //       iterations: Infinity,
-  //       forwards: true,
-  //     }
-  //   );
-  // };
-
-  // useEffect(() => {
-  //   if (isLoading) {
-  //     if (!pause && inGame) {
-  //       console.log(road());
-  //       road();
-  //     } else {
-  //       road().pause();
-
-  //       console.log("road", road);
-  //     }
-  //   }
-  // }, [pause, winLetters, inGame, isLoading]);
-
   let road = () =>
     document.getElementById("road").animate(
       [
@@ -283,25 +252,32 @@ export default function Game2() {
       }
     );
   useEffect(() => {
-    if (!winLetters && inGame) {
+    if (!pause && !gameOver) {
       road();
     } else {
       road().pause();
+      setPause(true);
     }
-  }, [pause, winLetters, inGame]);
+  }, [pause, gameOver]);
+
+  const launchNewGame = () => {
+    setPause(false);
+    setGameOver(false);
+    setobstY(-100);
+  };
 
   return (
     <>
       <div id="test" className="containerGrille">
         <div
-          className={inGame ? "grille" : "arret"}
+          className="grille"
           id="road"
           tabIndex="0"
           onKeyDown={(e) => setMove(e)}
         >
           {/* // *********** RAJOUTS THOM YAN UP******************/}
           {/* {letters && letters[idNum]} */}
-          {!winLetters ? (
+          {!gameOver ? (
             <>
               <div onClick={() => newLetter()}>CLIQUE ICI</div>
               <div onClick={() => setPause(!pause)}>PAUSE</div>
@@ -312,8 +288,14 @@ export default function Game2() {
 
           {/* // *********** RAJOUTS THOM YAN DOWN******************/}
           <img src={persos} id="car" alt="perso" className="perso" />
-          {inGame && <div id="obstacle"></div>}
+          {!pause && <div id="obstacle"></div>}
         </div>
+        {gameOver && (
+          <div className="gameOver">
+            <p>C'est perdu</p>
+            <button onClick={() => launchNewGame()}>Relance la partie</button>
+          </div>
+        )}
       </div>
     </>
   );
