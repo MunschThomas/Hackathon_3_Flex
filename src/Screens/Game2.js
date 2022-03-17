@@ -41,12 +41,6 @@ export default function Game2() {
   const [carY, setcarY] = useState(0);
 
   useEffect(() => {
-    // document.getElementById("car").getBoundingClientRect();
-    // setcarY(document.getElementById("car").getBoundingClientRect());
-    // setcarY(carY.bottom)
-    // console.log(carY)
-    // const tab = document.getElementsByClassName('obstacle');
-    // setObstacles(tab)
     setIsLoading(true);
   }, []);
 
@@ -54,6 +48,8 @@ export default function Game2() {
     isLoading &&
       setcarY(document.getElementById("car").getBoundingClientRect().bottom);
   }, [isLoading]);
+
+
 
   useEffect(() => {
     const int = setInterval(() => {
@@ -83,29 +79,7 @@ export default function Game2() {
     return () => clearInterval(int);
   }, [obstY]);
 
-  // useEffect(()=>{
-  //   console.log('OBSTAVLES',obstacles[1])
-  //   for (let i =0; i < obstacles.length;i++){
-  //     console.log(obstacles[i].getBoundingClientRect())
-  //   }
-  //   const int = setInterval(()=>{
-  //   const tab = document.getElementsByClassName('obstacle');
-  //   setObstacles(tab)
-  //   setIsLoading(true)
 
-  //   obstacles && console.log(obstacles[1].getBoundingClientRect().bottom)
-  //   for (let i =0; i < obstacles.length;i++){
-  //     console.log(obstacles[i].getBoundingClientRect().bottom)
-
-  //     if (obstacles[i].getBoundingClientRect().bottom >11188 ){
-  //       console.log("eeeeeeeeeeeeeeeeeeeeeeeeeeeeeee")
-  //     }
-  //   }
-
-  //   }, 500)
-
-  //  return () => clearInterval(int)
-  // } ,[obstacles])
 
   return (
     <>
