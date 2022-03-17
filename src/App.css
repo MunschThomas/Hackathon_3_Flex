@@ -1,0 +1,14 @@
+.loadingContainer {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loading {
+  width: 20%;
+}
+.App {
+  overflow-y: hidden;
+}
