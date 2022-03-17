@@ -23,6 +23,7 @@ function App() {
 
   useEffect(() => {
     if (isAuthenticated) {
+      console.log("test");
       let users = localStorage.getItem(user.name);
       if (!users) {
         localStorage.setItem(user.name, score);
@@ -30,7 +31,7 @@ function App() {
         setScore(users);
       }
     }
-  }, [score]);
+  }, [chooseGame, score, loading]);
 
   if (loading) {
     return (

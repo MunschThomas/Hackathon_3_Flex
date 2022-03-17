@@ -23,26 +23,18 @@ export default function Game3(props) {
   const [pause, setPause] = useState(false); // State Pause ou lettre
   const [letter, setLetter] = useState(false); //check si tombe sur lettre
 
-  
-  
   const [dataQuestion, setDataQuestion] = useState(dataQuestions);
-  
+
   const [isLoading, setIsLoading] = useState(false);
-  
-  
+
   /// **************
   /// SELECTION DES OBSTACLES ET PERSO SELON LE CHOIX PRECEDENT
   /// **************
-  
+
   const place = ["left", "middle", "right"]; // Emplacement obstacles ou lettres
   const [obstacle, setObstacle] = useState(null);
   const obstacleRoute = [rocks, cat, tree, e];
-  const obstacleBureau = [
-    prise,
-    computer,
-    extincteur,
-    e,
-  ];
+  const obstacleBureau = [prise, computer, extincteur, e];
 
   useEffect(() => {
     if (props.chooseGame === 0) {
@@ -75,21 +67,21 @@ export default function Game3(props) {
   // Lancement Nouvelle Partie
   const launchNewGame = () => {
     gameOver && rightAnswer > 0 && setRightAnswer(rightAnswer - 1);
-    !isWin &&  setPause(false);
+    !isWin && setPause(false);
     setGameOver(false);
     setobstY(-100);
     setLetter(false);
-  }; 
-  
+  };
+
   const launchNewNew = () => {
-    isWin && setRightAnswer(0)
+    isWin && setRightAnswer(0);
     setPause(false);
-    setIsWin(false)
+    setIsWin(false);
     setGameOver(false);
     setobstY(-100);
     setLetter(false);
-  }
- 
+  };
+
   // State coordonnées
   const [carPos, setCarPos] = useState(0);
   const [obstY, setobstY] = useState(-100);
@@ -321,23 +313,20 @@ export default function Game3(props) {
               </svg>
             </div>
           </div>
-          
+
           <Link to="../Profil">
             <div>Retour au profil</div>
           </Link>
 
-          {/* // *********** RAJOUTS THOM YAN UP******************/}
           {!gameOver ? (
             <>
-              {/* <div onClick={() => newLetter()}>CLIQUE ICI</div> */}
               <div onClick={() => setPause(!pause)}>PAUSE</div>
             </>
           ) : (
             <div>Victoire</div>
           )}
 
-          {/* // *********** RAJOUTS THOM YAN DOWN******************/}
-        <img
+          <img
             src={props.chooseGame === 0 ? persos : perso_office}
             id="car"
             alt="perso"
@@ -373,7 +362,6 @@ export default function Game3(props) {
               <button>Retour</button>
               <button onClick={() => launchNewNew()}>Nouvelle partie</button>
             </div>
-          
           </div>
         )}
       </div>
