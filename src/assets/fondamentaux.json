@@ -33,14 +33,16 @@
     "question": "La catégorie III des EPI, regroupe ceux destinés à la protection des lésions irreversibles ou mortelles",
     "reponse": "Vrai",
     "incorrect_answers": "Faux",
-    "correction": "c'était vrai ! Elle contient notamment: les casques d'électriciens, les gants TST..."
+    "correction": "c'était vrai ! Elle contient notamment: les casques d'électriciens, les gants TST...",
+    "image": "https://www.enedis.fr/sites/default/files/styles/image_full/public/images/2022-01/nous-connaitre-le-tarif-dacheminement-de-lelectricite.jpg?itok=MZILkoCD"
   },
   {
     "id": 5,
     "question": "Le port d'EPI n'est pas obligatoire lors des canicules",
     "reponse": "Faux",
     "incorrect_answers": "Vrai",
-    "correction": "c'était vrai, le port d'EPI quelque soit la météo est obligatoire."
+    "correction": "c'était vrai, le port d'EPI quelque soit la météo est obligatoire.",
+    "image":"https://www.enedis.fr/sites/default/files/styles/image_content_full/public/home/forum-virtuel-de-lemploi-2022.jpg?itok=DBh0o8Ln"
   },
   {
     "id": 6,
