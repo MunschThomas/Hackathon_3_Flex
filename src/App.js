@@ -1,15 +1,15 @@
 import "./App.css";
+
 import { Route, Routes } from "react-router-dom";
 import Home from "./screens/Home";
 import Profil from "./screens/Profil";
 import Loading from "./assets/loading.gif";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useState, useEffect } from "react";
-import Game2 from "./screens/Game2/Game2";
-// import { useAuth0 } from "@auth0/auth0-react";
+import Game2 from "./screens/Game2";
+import Game3 from "./screens/Game3";
 
 function App() {
-  // const { isAuthenticated, isLoading } = useAuth0();
   const [loading, setLoading] = useState(true);
   const { user, isLoading, isAuthenticated } = useAuth0();
   const [score, setScore] = useState(0);
@@ -53,10 +53,13 @@ function App() {
           path="/game"
           element={<Game2 score={score} setScore={setScore} />}
         ></Route>
+        <Route path="/game3" element={<Game3 />}></Route>
       </Routes>
     </div>
   ) : (
-    <Home />
+    <>
+      <Home />
+    </>
   );
 }
 

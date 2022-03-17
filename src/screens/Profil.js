@@ -76,6 +76,9 @@ const Profile = (props) => {
           <Link to="game">
             <div className="bouton play">Jouer</div>
           </Link>
+          <Link to="game3">
+            <div className="bouton play">Jouer TEST</div>
+          </Link>
         </div>
         <div className="logOut">
           <Logout />
