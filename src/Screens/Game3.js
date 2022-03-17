@@ -6,6 +6,8 @@ import cat from "../assets/obstacle3.png";
 import persos from "../assets/persos.png";
 import e from "../assets/e.png";
 
+import modalQ from "../components/ModalQ";
+import ModalQ from "../components/ModalQ";
 export default function Game2() {
   const decal = window.innerWidth / 4.5;
 
@@ -146,7 +148,6 @@ export default function Game2() {
 
     if (!gameOver && !pause) {
       const int = setInterval(() => {
-   
         let place = document
           .getElementsByClassName("obstacle")[0]
           .className.split(" ")[1];
@@ -272,6 +273,10 @@ export default function Game2() {
           tabIndex="0"
           onKeyDown={(e) => setMove(e)}
         >
+          {/* // *********** CLARA TOUCH SCREEN******************/}
+          <div id="grilleLeft"></div>
+          <div id="grilleRight"></div>
+
           {/* // *********** RAJOUTS THOM YAN UP******************/}
           {/* {letters && letters[idNum]} */}
           {!gameOver ? (
@@ -291,8 +296,11 @@ export default function Game2() {
           <div className="gameOver">
             <p>C'est perdu</p>
             <button onClick={() => launchNewGame()}>Relance la partie</button>
+            <div className="overlay"></div>
           </div>
         )}
+        {pause && <ModalQ/>}
+
       </div>
     </>
   );

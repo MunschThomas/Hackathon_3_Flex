@@ -1,45 +1,45 @@
-import "./App.css";
+import './App.css'
 
-import { Route, Routes } from "react-router-dom";
-import Home from "./screens/Home";
-import Profil from "./screens/Profil";
-import Loading from "./assets/loading.gif";
-import { useAuth0 } from "@auth0/auth0-react";
-import { useState, useEffect } from "react";
-import Game2 from "./screens/Game2";
-import Game3 from "./screens/Game3";
+import { Route, Routes } from 'react-router-dom'
+import Home from './screens/Home'
+import Profil from './screens/Profil'
+import Loading from './assets/loading.gif'
+import { useAuth0 } from '@auth0/auth0-react'
+import { useState, useEffect } from 'react'
+import Game2 from './screens/Game2'
+import Game3 from './screens/Game3'
 
 function App() {
-  const [loading, setLoading] = useState(true);
-  const { user, isLoading, isAuthenticated } = useAuth0();
-  const [score, setScore] = useState(0);
+  const [loading, setLoading] = useState(true)
+  const { user, isLoading, isAuthenticated } = useAuth0()
+  const [score, setScore] = useState(0)
   useEffect(() => {
-    setTimeout(() => setLoading(false), 500);
-  }, []);
+    setTimeout(() => setLoading(false), 500)
+  }, [])
 
   useEffect(() => {
     if (isAuthenticated) {
-      let users = localStorage.getItem(user.name);
+      let users = localStorage.getItem(user.name)
       if (!users) {
-        localStorage.setItem(user.name, score);
+        localStorage.setItem(user.name, score)
       } else {
-        setScore(users);
+        setScore(users)
       }
     }
-  }, [score]);
+  }, [score])
 
   if (loading) {
     return (
-      <div className="loadingContainer">
-        <img src={Loading} alt="loading" className="loading"></img>
+      <div className='loadingContainer'>
+        <img src={Loading} alt='loading' className='loading'></img>
       </div>
-    );
+    )
   }
   return isAuthenticated ? (
-    <div className="App">
+    <div className='App'>
       <Routes>
         <Route
-          path="/"
+          path='/'
           element={
             <Profil
               score={score}
@@ -50,17 +50,17 @@ function App() {
           }
         ></Route>
         <Route
-          path="/game"
+          path='/game'
           element={<Game2 score={score} setScore={setScore} />}
         ></Route>
-        <Route path="/game3" element={<Game3 />}></Route>
+        <Route path='/game3' element={<Game3 />}></Route>
       </Routes>
     </div>
   ) : (
     <>
       <Home />
     </>
-  );
+  )
 }
 
-export default App;
+export default App
