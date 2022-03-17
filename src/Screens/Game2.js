@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import "./Game2.css";
-import rocks from "../../assets/obstacle1.png";
-import tree from "../../assets/obstacle2.png";
-import cat from "../../assets/obstacle3.png";
-import persos from "../../assets/persos.png";
+import rocks from "../assets/obstacle1.png";
+import tree from "../assets/obstacle2.png";
+import cat from "../assets/obstacle3.png";
+import persos from "../assets/persos.png";
 
 export default function Game2() {
   const decal = window.innerWidth / 4.5;
@@ -31,34 +31,36 @@ export default function Game2() {
     }
   };
 
+  useEffect(() => {
+    console.log(document.getElementById("car").getBoundingClientRect());
+  }, []);
 
-  useEffect(()=>{
-  console.log(document.getElementById("car").getBoundingClientRect());
+  //  useEffect(()=> {
 
-  }, [])
+  //    let road = document.getElementById('road').animate(
+  //      [{
+  //        backgroundPositionY: 0
+  //      },{
+  //        backgroundPositionY:100
+  //      }],
+  //      {duration: 3000,
+  //    ease: "linear",
+  //    iterations: Infinity
+  //    }
 
-//  useEffect(()=> {
-   
-//    let road = document.getElementById('road').animate(
-//      [{
-//        backgroundPositionY: 0
-//      },{
-//        backgroundPositionY:100
-//      }],
-//      {duration: 3000,
-//    ease: "linear",
-//    iterations: Infinity
-//    }
- 
-//    )
-//  }
-//  , [])
+  //    )
+  //  }
+  //  , [])
 
   return (
     <>
       <div className="containerGrille">
-        
-        <div className="grille" id="road" tabIndex="0" onKeyDown={(e) => setMove(e)}>
+        <div
+          className="grille"
+          id="road"
+          tabIndex="0"
+          onKeyDown={(e) => setMove(e)}
+        >
           <img src={persos} id="car" alt="perso" className="perso" />
           {inGame && (
             <div>
