@@ -1,7 +1,112 @@
-* {
+@import url("https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+/* --------------------- */
+/*         Root          */
+/* --------------------- */
+
+:root {
+  /******* colors *******/
+
+  /* --clr-dark: 230 35% 7%; */
+  /* color: hsl(var(--clr-white) / 0.8); */
+  --blue-200: rgb(246, 246, 254);
+  --blue-300: rgb(218, 221, 252);
+  --blue-400: rgb(77, 89, 239);
+  --blue-500: rgb(20, 35, 220);
+  --blue-600: rgb(15, 26, 164);
+  --blue-700: rgb(7, 13, 79);
+
+  --green-200: rgb(247, 251, 239);
+  --green-300: rgb(213, 235, 173);
+  --green-400: rgb(181, 220, 111);
+  --green-500: rgb(150, 205, 50);
+  --green-600: rgb(105, 143, 35);
+  --green-700: rgb(60, 82, 20);
+
+  --neutral-50: rgb(255, 255, 255);
+  --neutral-75: rgb(250, 250, 250);
+  --neutral-100: rgb(241, 242, 243);
+  --neutral-200: rgb(233, 235, 236);
+  --neutral-300: rgb(222, 224, 227);
+  --neutral-400: rgb(200, 203, 208);
+  --neutral-500: rgb(174, 177, 183);
+  --neutral-600: rgb(134, 138, 147);
+  --neutral-700: rgb(96, 97, 108);
+  --neutral-800: rgb(59, 60, 69);
+  --neutral-900: rgb(16, 16, 20);
+
+  /******* font-sizes *******/
+
+  /* --fs-h1: clamp(min, ratio, max); Exemple pour avoir une typo responsive*/
+  /* --fs-h1: clamp(5rem, 8vw + 1rem, 9.375rem); Exemple pour avoir une typo responsive*/
+  /* --fs-h6: clamp(1rem, 4vw + 0.5rem, 3rem); Exemple pour avoir une typo responsive*/
+
+  --fs-h1: 2.5rem;
+  --fs-h2: 2rem;
+  --fs-h3: 1.8rem;
+  --fs-h4: 1.6rem;
+  --fs-body: 1.6rem;
+
+  /******* font-families *******/
+  --ff-body: "Public Sans, sans-serif";
+}
+
+/* --------------------- */
+/*         Reset         */
+/* --------------------- */
+
+/******* Box sizing *******/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+}
+
+/******* Body *******/
+body {
+  min-height: 100vh;
+}
+
+/******* Images *******/
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* make form elements easier to work with */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  border: none;
+  outline: none;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+h1,
+h2 {
+  font-weight: normal;
+  margin-block-end: 0;
+  margin-block-start: 0;
 }
 
 body {
