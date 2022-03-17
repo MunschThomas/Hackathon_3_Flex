@@ -11,20 +11,27 @@
 }
 
 .profilName {
-  font-size: 32px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  font-style: none;
+  font-family: var(--sans-serif);
+  margin-left: 10px;
 }
 
 .infoContainer {
+  position: absolute;
   display: flex;
   align-content: center;
   align-items: center;
-  justify-content: space-evenly;
-  width: 21rem;
+  justify-content: center;
+  left: 0.5rem;
 }
 
 .infoContainer img {
   border-radius: 50%;
+  height: 50px !important;
 }
+
 .holderScoreContainer {
   width: 100%;
   display: flex;
@@ -33,6 +40,7 @@
   align-content: center;
   align-items: center;
   height: 8rem;
+  margin-top: 80px;
 }
 
 .scoreContainer {
@@ -41,6 +49,13 @@
   justify-content: space-evenly;
   flex-direction: row;
   align-items: center;
+}
+
+.holderScoreContainer h3 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  font-style: none;
+  font-family: var(--sans-serif);
 }
 
 .winIcon {
@@ -61,42 +76,114 @@
 
 .logOut {
   position: absolute;
-  bottom: 1em;
+  right: -0.5em;
   width: 11rem;
   height: 2rem;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 10px;
+  background-color: transparent;
   cursor: pointer;
+  font-size: 1.1rem;
+  font-weight: 600;
+  font-style: none;
+  font-family: var(--sans-serif);
+}
+
+.logOut button:hover {
+  color: var(--green-500);
 }
 
 .boutonContainer {
   display: flex;
-  flex-direction: column;
-  height: 10rem;
-  justify-content: space-around;
+  width: 80vw;
+  justify-content: space-evenly;
 }
 
-.bouton {
+.boutonPlay {
   font-size: 32px;
   cursor: pointer;
-  background-color: var(--green-500);
   border-radius: 10px;
   padding: 0.3em;
   font-size: 32px;
-  width: 11rem;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 3rem;
+  box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 15%);
+  width: 313px;
+  height: 359px;
+  position: relative;
 }
 
-.play {
-  background-color: var(--blue-600);
+.boutonPlay h3 {
+  position: absolute;
+  top: 150px;
+  font-size: 1.8rem;
+  font-weight: 600;
+  font-style: none;
+  font-family: var(--sans-serif);
+}
+.boutonPlay h3:nth-of-type(2) {
+  top: 182px;
+}
+
+.boutonPlay p {
+  font-size: 1.1rem;
+  position: absolute;
+  top: 230px;
+  width: 80%;
+}
+
+.playRoute {
+  position: absolute;
+  top: 0;
+  height: 145px;
+  width: 100%;
+  background-image: url(../../assets/routeFina.png);
+  background-position: center;
+  background-size: cover;
   color: var(--neutral-50);
 }
 
-.bouton:hover {
-  border: solid 3px var(--blue-300);
+.playBureau {
+  position: absolute;
+  top: 0;
+  height: 145px;
+  width: 100%;
+  background-image: url(../../assets/routeOffice.png);
+  background-position: center;
+  background-size: cover;
+  /* color: var(--neutral-50); */
+}
+
+.playReviser {
+  position: absolute;
+  top: 0;
+  height: 145px;
+  width: 100%;
+  background-color: var(--green-500);
+}
+
+.boutonPlay:hover {
+  box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 7%);
+  transform: translateY(0.25em);
+  transition: 0.5s ease;
+}
+
+.imgContainerProfil {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0rem;
+  width: 100vw;
+  height: 5rem;
+  box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 7%);
+}
+
+.imgContainerProfil img {
+  width: auto;
+  height: 35px;
 }

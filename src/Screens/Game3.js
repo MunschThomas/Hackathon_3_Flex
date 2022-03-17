@@ -3,26 +3,54 @@ import "./Game2.css";
 import rocks from "../assets/obstacle1.png";
 import tree from "../assets/obstacle2.png";
 import cat from "../assets/obstacle3.png";
+import prise from "../assets/obstacle1_office.png";
+import computer from "../assets/obstacle2_office.png";
+import extincteur from "../assets/obstacle3_office.png";
 import persos from "../assets/persos.png";
+import perso_office from "../assets/persos_office.png";
 import e from "../assets/e.png";
+import { Link } from "react-router-dom";
 
+import ModalQ from "../components/ModalQ";
 import dataQuestions from "../assets/fondamentaux.json";
 
-// import modalQ from "../components/ModalQ";
-import ModalQ from "../components/ModalQ";
-export default function Game3() {
-  const [letters, setLetters] = useState([]);
+export default function Game3(props) {
+  const decal = window.innerWidth / 4.5;
+
+  const [inGame, setIngame] = useState(true);
 
   const [gameOver, setGameOver] = useState(false); // State Colision
   const [pause, setPause] = useState(false); // State Pause ou lettre
   const [letter, setLetter] = useState(false); //check si tombe sur lettre
 
-  const place = ["left", "middle", "right"]; // Emplacement obstacles ou lettres
-  const obstacle = [rocks, cat, tree, e]; // Type obstacles
-
+  
+  
   const [dataQuestion, setDataQuestion] = useState(dataQuestions);
-
+  
   const [isLoading, setIsLoading] = useState(false);
+  
+  
+  /// **************
+  /// SELECTION DES OBSTACLES ET PERSO SELON LE CHOIX PRECEDENT
+  /// **************
+  
+  const place = ["left", "middle", "right"]; // Emplacement obstacles ou lettres
+  const [obstacle, setObstacle] = useState(null);
+  const obstacleRoute = [rocks, cat, tree, e];
+  const obstacleBureau = [
+    prise,
+    computer,
+    extincteur,
+    e,
+  ];
+
+  useEffect(() => {
+    if (props.chooseGame === 0) {
+      setObstacle(obstacleRoute);
+    } else if (props.chooseGame === 1) {
+      setObstacle(obstacleBureau);
+    }
+  }, []);
   // const [vitesse, setVitesse] = useState(null)
 
   //Attend chargement de la page
@@ -47,14 +75,14 @@ export default function Game3() {
   // Lancement Nouvelle Partie
   const launchNewGame = () => {
     gameOver && rightAnswer > 0 && setRightAnswer(rightAnswer - 1);
-    isWin && setRightAnswer(0)
     !isWin &&  setPause(false);
     setGameOver(false);
     setobstY(-100);
     setLetter(false);
   }; 
-
+  
   const launchNewNew = () => {
+    isWin && setRightAnswer(0)
     setPause(false);
     setIsWin(false)
     setGameOver(false);
@@ -112,7 +140,6 @@ export default function Game3() {
         setobstY(
           document.getElementsByClassName("obstacle")[0].getBoundingClientRect()
         );
-
         if (obstY.bottom > carY - 150 && obstY.bottom < carY + 20) {
           //Check lettre
           if (
@@ -177,7 +204,7 @@ export default function Game3() {
         return () => clearInterval(interval);
       }
     }
-  }, [gameOver, pause]);
+  }, [obstacle, gameOver, pause]);
   // ANIMATION DU BACKGROUND et OBSTACLE
 
   let road = () =>
@@ -210,12 +237,23 @@ export default function Game3() {
 
   return (
     <>
-      <div id="test" className="containerGrille">
+      <div
+        id="test"
+        className="containerGrille"
+        style={{
+          backgroundColor: props.chooseGame === 0 ? "#91c574" : "#D8C4B6",
+        }}
+      >
         <div
           className="grille"
           id="road"
           tabIndex="0"
           onKeyDown={(e) => setMove(e)}
+          style={{
+            backgroundImage: `url(${
+              props.chooseGame === 0 ? props.routeFina : props.routeOffice
+            })`,
+          }}
         >
           <div className="obstacleBox">
             {!pause && <div id="obstacle"></div>}
@@ -283,6 +321,10 @@ export default function Game3() {
               </svg>
             </div>
           </div>
+          
+          <Link to="../Profil">
+            <div>Retour au profil</div>
+          </Link>
 
           {/* // *********** RAJOUTS THOM YAN UP******************/}
           {!gameOver ? (
@@ -295,7 +337,12 @@ export default function Game3() {
           )}
 
           {/* // *********** RAJOUTS THOM YAN DOWN******************/}
-          <img src={persos} id="car" alt="perso" className="perso" />
+        <img
+            src={props.chooseGame === 0 ? persos : perso_office}
+            id="car"
+            alt="perso"
+            className="perso"
+          />
           {pause && letter && (
             <ModalQ
               pause={pause}
@@ -326,6 +373,7 @@ export default function Game3() {
               <button>Retour</button>
               <button onClick={() => launchNewNew()}>Nouvelle partie</button>
             </div>
+          
           </div>
         )}
       </div>
