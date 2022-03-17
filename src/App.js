@@ -23,7 +23,7 @@ function App() {
       if (!users) {
         localStorage.setItem(user.name, score);
       } else {
-        localStorage.setItem(user.name, users);
+        setScore(users);
       }
     }
   }, [score]);

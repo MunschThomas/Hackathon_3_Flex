@@ -9,14 +9,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrophy } from "@fortawesome/free-solid-svg-icons";
 
 const Profile = (props) => {
-  // const { user, isLoading } = useAuth0();
-
   const [totalScore, setTotalScore] = useState();
 
   useEffect(() => {
-    setTotalScore(props.score);
-    console.log("score", props.score);
-  }, [props.score]);
+    let users = localStorage.getItem(props.user.name);
+    setTotalScore(users);
+  }, []);
 
   if (props.isLoading) {
     return;
@@ -51,19 +49,19 @@ const Profile = (props) => {
             />
             <FontAwesomeIcon
               icon={faTrophy}
-              size="3x"
+              size="4x"
               color="var(--neutral-600)"
               className={totalScore >= 3 ? "winIcon" : ""}
             />
             <FontAwesomeIcon
               icon={faTrophy}
-              size="3x"
+              size="4x"
               color="var(--neutral-600)"
               className={totalScore >= 4 ? "winIcon" : ""}
             />
             <FontAwesomeIcon
               icon={faTrophy}
-              size="3x"
+              size="5x"
               color="var(--neutral-600)"
               className={totalScore >= 5 ? "winIcon" : ""}
             />
