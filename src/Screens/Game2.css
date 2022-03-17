@@ -25,7 +25,7 @@
   /* background-size: cover; */
   background-position: center;
   background-repeat-x: no-repeat;
-  animation: background-defile 3s linear infinite forwards;
+  /* animation: background-defile 3s linear infinite forwards; */
 }
 
 .perso {
@@ -41,14 +41,10 @@
 
 .obstacle {
   position: absolute;
-  width: 10vw;
-  min-width: 100px;
+  width: 5% !important;
+  /* min-width: 100px; */
   height: auto;
-  animation: obstacle-defile 2500ms linear infinite;
-}
-
-.obstacle:nth-of-type(2) {
-  width: 3vw;
+  animation: obstacle-defile 2500ms linear forwards;
 }
 
 .left {
