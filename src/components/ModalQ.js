@@ -117,7 +117,9 @@ const ModalQ = ({
           </div>
           <button
             className={selectedAnswer ? `visible` : `hidden`}
-            onClick={() => launchNewGame()}
+            onClick={() =>
+              rightAnswer === 6 ? launchNewGame(6) : launchNewGame()
+            }
           >
             Continuer
           </button>
