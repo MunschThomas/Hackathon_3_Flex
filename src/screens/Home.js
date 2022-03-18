@@ -7,7 +7,7 @@ import Logo from '../assets/logo_white.png'
 export default function Home() {
   return (
     <div className='Home' style={{ backgroundImage: `url(${background})` }}>
-      <div className='imgContainer'>
+      <div className='imgContainerHome'>
         <img src={Logo} alt='logo Enedis'></img>
       </div>
       <Login />
