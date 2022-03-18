@@ -20,6 +20,7 @@ const ModalQ = ({
 
   const [answerCorrect, setAnswerCorrect] = useState(null)
   const [selectedAnswer, setSelectedAnswer] = useState(null)
+  const [clrModal,  setClrModal] = useState(0)
 
   const checkKey = (choice) => {
     focus1.current.focus()
@@ -28,9 +29,11 @@ const ModalQ = ({
       const showTrue = document.getElementById('correctAnswerReavel')
       showTrue.style.visibility = 'visible'
       setRightAnswer((rightAnswer) => rightAnswer + 1)
+      setClrModal(1)
     } else {
       const showTrue = document.getElementById('wrongAnswerReavel')
       showTrue.style.visibility = 'visible'
+      setClrModal(2)
     }
   }
   const launch = (e) => {
@@ -60,9 +63,11 @@ const ModalQ = ({
       const showTrue = document.getElementById('correctAnswerReavel')
       showTrue.style.visibility = 'visible'
       setRightAnswer((rightAnswer) => rightAnswer + 1)
+      setClrModal(1)
     } else {
       const showTrue = document.getElementById('wrongAnswerReavel')
       showTrue.style.visibility = 'visible'
+      setClrModal(2)
     }
   }
 
@@ -84,17 +89,18 @@ const ModalQ = ({
 
   return (
     <div
-      ref={focus1}
-      className='wrapper'
-      id='wrapper'
+      
+      className='wrapper2'
+      // id='wrapper'
       tabIndex='0'
       onKeyDown={(e) => launch(e)}
     >
-      <div className='wrapQuest'>
-        <h1>{isAsked.question}</h1>
+      <div className={`wrapQuest ${(clrModal === 1)  ? "modalWin" : ((clrModal === 2) ? "modalLoose" : "")}`} >
+        <h1>Question :</h1>
+        <h2>{isAsked.question}</h2>
         <div className='AnswerButton'>
-          <button onClick={(e) => handleListItemClick(e)}>Vrai</button>
-          <button onClick={(e) => handleListItemClick(e)}>Faux</button>
+          <button className="btnVert" onClick={(e) => handleListItemClick(e)}>Vrai</button>
+          <button className="btnRouge" onClick={(e) => handleListItemClick(e)}>Faux</button>
         </div>
         <div className='ReavelCorrect'>
           <div id='correctAnswerReavel' className='AnswerReavel'>

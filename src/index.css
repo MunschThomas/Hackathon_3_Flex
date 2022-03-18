@@ -23,7 +23,9 @@
 
   --red-200: #ffe0e6;
   --red-300:#ffa3b4;
+  --red-400: #ff4768;
   --red-500: #e10028;
+  --red-600: #ad001f;
 
   --neutral-50: rgb(255, 255, 255);
   --neutral-75: rgb(250, 250, 250);
@@ -81,7 +83,7 @@ h5 {
 }
 
 @font-face {
-  font-family: 'Enedis';
+  font-family: 'Enedis-Bold';
   src: local('Enedis'), url('./assets/fonts/Enedis-Bold.ttf') format('truetype');
   font-weight: bold;
 }
@@ -142,7 +144,7 @@ code {
 }
 
 button{
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+  font-family: public-sans, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
   "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
   sans-serif;
 }
