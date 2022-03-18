@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react'
 import { useAuth0 } from '@auth0/auth0-react'
 import Home from './screens/Home'
 import Profil from './screens/Profil'
-import Game3 from './screens/Game'
+import Game from './screens/Game'
 import Revisions from './screens/Revisions'
 import Loading from './assets/loading.gif'
 import routeFina from './assets/routeFina.png'
@@ -70,7 +70,7 @@ function App() {
         <Route
           path='Profil/game'
           element={
-            <Game3
+            <Game
               score={score}
               setScore={setScore}
               chooseGame={chooseGame}
@@ -82,7 +82,7 @@ function App() {
         <Route
           path='game'
           element={
-            <Game3
+            <Game
               score={score}
               setScore={setScore}
               chooseGame={chooseGame}

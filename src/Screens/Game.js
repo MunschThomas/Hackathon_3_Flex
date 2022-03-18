@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import './Game.css'
+import boomImg from '../assets/boom.png'
 import rocks from '../assets/obstacle1.png'
 import tree from '../assets/obstacle2.png'
 import cat from '../assets/obstacle3.png'
@@ -16,7 +17,7 @@ import { useAuth0 } from '@auth0/auth0-react'
 import ModalQ from '../components/ModalQ'
 import dataQuestions from '../assets/fondamentaux.json'
 
-export default function Game3(props) {
+export default function Game(props) {
   const decal = window.innerWidth / 4.5
   // Import données USER
   const { user } = useAuth0()
@@ -78,6 +79,7 @@ export default function Game3(props) {
     setGameOver(false)
     setobstY(-100)
     setLetter(false)
+    setIsBoom(false)
   }
 
   const launchNewNew = () => {
@@ -87,6 +89,7 @@ export default function Game3(props) {
     setGameOver(false)
     setobstY(-100)
     setLetter(false)
+    setIsBoom(false)
   }
 
   // State coordonnées
@@ -95,6 +98,9 @@ export default function Game3(props) {
 
   const [carX, setCarX] = useState(0)
   const [carY, setcarY] = useState(0)
+
+  const [isBoom, setIsBoom] = useState(false)
+  const [placeBoom, setPlaceBoom] = useState('')
 
   // Rècupe coordonées voiture
   useEffect(() => {
@@ -107,20 +113,20 @@ export default function Game3(props) {
     let car = document.getElementById('car')
 
     if (e.key === 'ArrowLeft' && carPos >= 0) {
-      car.style.transform = `translateX(calc(${carPos - 230}px - 40%))`
+      car.style.transform = `translateX(calc(${carPos - 230}px - 50%))`
       setCarPos((carPos) => carPos - 230)
       setCarX((carX) => carX - 1)
     }
     if (e.key === 'ArrowRight' && carPos <= 0) {
-      car.style.transform = `translateX(calc(${carPos + 230}px - 40%))`
+      car.style.transform = `translateX(calc(${carPos + 230}px - 50%))`
       setCarPos((carPos) => carPos + 230)
       setCarX((carX) => carX + 1)
     }
     if (e.key === 'ArrowDown') {
-      car.style.transform = `translateX(calc(${carPos}px - 40%)) rotate(360deg)`
+      car.style.transform = `translateX(calc(${carPos}px - 50%)) rotate(360deg)`
     }
     if (e.key === 'ArrowUp') {
-      car.style.transform = `translateX(calc(${carPos}px - 40%)) rotate(-360deg)`
+      car.style.transform = `translateX(calc(${carPos}px - 50%)) rotate(-360deg)`
     }
     if (e.key === ' ') {
       launchNewGame()
@@ -135,11 +141,11 @@ export default function Game3(props) {
         let place = document
           .getElementsByClassName('obstacle')[0]
           .className.split(' ')[1]
-
+        console.log(place)
         setobstY(
           document.getElementsByClassName('obstacle')[0].getBoundingClientRect()
         )
-        if (obstY.bottom > carY - 150 && obstY.bottom < carY + 20) {
+        if (obstY.bottom > carY - 170 && obstY.bottom < carY + 20) {
           //Check lettre
           if (
             document
@@ -160,6 +166,14 @@ export default function Game3(props) {
             (carX === 1 && place === 'right')
           ) {
             setGameOver(true)
+            setPlaceBoom(
+              document
+                .getElementsByClassName('obstacle')[0]
+                .className.split(' ')[1]
+            )
+            setIsBoom(true)
+            animBoom()
+            console.log(animBoom())
           }
         }
       }, 10)
@@ -212,6 +226,7 @@ export default function Game3(props) {
         {
           backgroundPositionY: 0,
         },
+
         {
           backgroundPositionY: '1445px',
         },
@@ -223,6 +238,26 @@ export default function Game3(props) {
         forwards: true,
       }
     )
+
+  let animBoom = () => {
+    document.getElementById('explose').animate(
+      [
+        {
+          opacity: 1,
+        },
+        {
+          opacity: 0,
+        },
+      ],
+      {
+        delay: 0,
+        duration: 800,
+        ease: 'linear',
+        iterations: 3,
+        forwards: true,
+      }
+    )
+  }
 
   //Stopper animation Background
   useEffect(() => {
@@ -256,6 +291,16 @@ export default function Game3(props) {
         >
           <div className='obstacleBox'>
             {!pause && <div id='obstacle'></div>}
+            {/* <img id="explose" src={boomImg} alt="explose" className={isBoom ? `explose boom ${placeBomm}` : "explose"}/>  */}
+            {isBoom && (
+              <img
+                id='explose'
+                src={boomImg}
+                alt='explose'
+                className={isBoom ? `explose ${placeBoom}` : 'explose'}
+              />
+            )}
+
             <div className='holderButtonTop'>
               <Link to='../Profil'>
                 <div className='returnBtn'>
@@ -338,6 +383,7 @@ export default function Game3(props) {
               </svg>
             </div>
           </div>
+
           {/* // *********** RAJOUTS THOM YAN DOWN******************/}
           <img
             src={props.chooseGame === 0 ? persos : perso_office}
