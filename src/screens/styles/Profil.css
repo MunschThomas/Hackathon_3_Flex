@@ -10,6 +10,17 @@
   text-align: center;
 }
 
+.holderContainerCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  align-content: stretch;
+  width: 100%;
+  display: flex;
+  text-align: center;
+}
+
 .profilName {
   font-size: 1.1rem;
   font-weight: 600;
@@ -25,6 +36,7 @@
   align-items: center;
   justify-content: center;
   left: 0.5rem;
+  cursor: pointer;
 }
 
 .infoContainer img {

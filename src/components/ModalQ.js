@@ -70,6 +70,7 @@ const ModalQ = ({
       setClrModal(2)
     }
   }
+
   useEffect(() => {
     const quest = Math.floor(Math.random() * dataQuestion.length)
 

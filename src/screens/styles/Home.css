@@ -25,6 +25,15 @@
 }
 
 .imgContainer {
+  top: 1rem;
+  width: 800px;
+  height: 500px;
+}
+.imgContainer img {
+  height: 100%;
+}
+
+.imgContainerHome {
   position: absolute;
   top: 1rem;
   width: 20vw;
