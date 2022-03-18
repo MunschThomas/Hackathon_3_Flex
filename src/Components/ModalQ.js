@@ -18,7 +18,7 @@ const ModalQ = ({
 
   // }
 
-  // const [answerCorrect, setAnswerCorrect] = useState(null);
+  const [answerCorrect, setAnswerCorrect] = useState(null)
   const [selectedAnswer, setSelectedAnswer] = useState(null)
 
   const checkKey = (choice) => {
@@ -69,8 +69,8 @@ const ModalQ = ({
     const quest = Math.floor(Math.random() * dataQuestion.length)
 
     console.log('dataQuestion', dataQuestion, 'quest', quest)
-
     const chosenQuest = dataQuestion.filter((dataQuestion, i) => i === quest)
+
     const newTab = dataQuestion.filter((el) => el.id !== chosenQuest[0].id)
     console.log('newTab', newTab)
     setDataQuestion(newTab)
