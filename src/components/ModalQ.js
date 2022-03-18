@@ -27,10 +27,12 @@ const ModalQ = ({
     if (choice === isAsked.reponse) {
       const showTrue = document.getElementById("correctAnswerReavel");
       showTrue.style.visibility = "visible";
+
       setRightAnswer((rightAnswer) => rightAnswer + 1);
       setClrModal(1);
     } else {
       const showTrue = document.getElementById("wrongAnswerReavel");
+      document.getElementById("correctAnswerReavel").style.display = "none";
       showTrue.style.visibility = "visible";
       setClrModal(2);
     }
@@ -56,6 +58,17 @@ const ModalQ = ({
   }, [rightAnswer]);
 
   const handleListItemClick = (event) => {
+    document.getElementById("reavelBlockDown").style.animation =
+      "revealDown 0.1s linear forwards";
+    document.getElementById("reavelBlockUp").style.animation =
+      "revealUp 0.2s linear forwards";
+    document.getElementById("btnA").style.display = "none";
+    document.getElementById("btnB").style.display = "none";
+
+    // document.getElementById("reavelBlockDown").style.transform =
+    //   "translateX(45px) translateX(-250%)";
+    // document.getElementById("reavelBlockUp").style.transform =
+    //   "translateY(-180px) translateX(-50%)";
     console.log("CONTENT", event.target.textContent);
     setSelectedAnswer(event.target.textContent);
     if (event.target.textContent === isAsked.reponse) {
@@ -97,31 +110,47 @@ const ModalQ = ({
         className={`wrapQuest ${
           clrModal === 1 ? "modalWin" : clrModal === 2 ? "modalLoose" : ""
         }`}
+        id="reavelBlockUp"
       >
         <h1>Question :</h1>
         <h2>{isAsked.question}</h2>
         <div className="AnswerButton">
-          <button className="btnVert" onClick={(e) => handleListItemClick(e)}>
+          <button
+            id="btnA"
+            className="btnVert"
+            onClick={(e) => handleListItemClick(e)}
+          >
             Vrai
           </button>
-          <button className="btnRouge" onClick={(e) => handleListItemClick(e)}>
+          <button
+            id="btnB"
+            className="btnRouge"
+            onClick={(e) => handleListItemClick(e)}
+          >
             Faux
           </button>
         </div>
-        <div className="ReavelCorrect">
-          <div id="correctAnswerReavel" className="AnswerReavel">
-            <h2>Bravo</h2>
-          </div>
-          <div id="wrongAnswerReavel" className="AnswerReavel">
-            <h2>Oh oh, {isAsked.correction}</h2>
-          </div>
-          <button
-            className={selectedAnswer ? `visible` : `hidden`}
-            onClick={() => launchNewGame()}
-          >
-            Continuer
-          </button>
+      </div>
+      <div
+        className={`ReavelCorrect wrapQuest ${
+          clrModal === 1 ? "modalWin" : clrModal === 2 ? "modalLoose" : ""
+        }`}
+        id="reavelBlockDown"
+      >
+        <div id="correctAnswerReavel" className="AnswerReavel">
+          <h2>Bravo</h2>
         </div>
+        <div id="wrongAnswerReavel" className="AnswerReavel">
+          <h2>Oh oh, {isAsked.correction}</h2>
+        </div>
+        <button
+          className={selectedAnswer ? `visible` : `hidden`}
+          onClick={() =>
+            rightAnswer === 6 ? launchNewGame(6) : launchNewGame()
+          }
+        >
+          Continuer
+        </button>
       </div>
     </div>
   );
