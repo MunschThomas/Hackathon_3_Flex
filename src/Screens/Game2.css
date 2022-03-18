@@ -13,18 +13,34 @@
   overflow-y: hidden;
 }
 
-.enedisContainer{position: absolute; top: 20px; z-index:520000; left:50%; transform:translateX(-50%) } 
+.enedisContainer {
+  position: absolute;
+  top: 20px;
+  z-index: 520000;
+  left: 50%;
+  transform: translateX(-50%);
+}
 
-.letterDetails {width:150px; height: 50px; display: flex;}
+.letterDetails {
+  width: 150px;
+  height: 50px;
+  display: flex;
+}
 .letterDetails:nth-child() {
   opacity: 0.5;
 }
 
- 
-.cls-2, .cls-1 {fill: #c8cbd0;} 
+.cls-2,
+.cls-1 {
+  fill: #c8cbd0;
+}
 
-.cls-3{fill: var(--blue-500);}  
-.cls-4 {fill: var(--green-500);} 
+.cls-3 {
+  fill: var(--blue-500);
+}
+.cls-4 {
+  fill: var(--green-500);
+}
 .grille {
   display: flex;
   flex-wrap: wrap;
@@ -81,11 +97,11 @@
     position: relative;
 } */
 
-.obstacleBox{
-    position: relative;
-    width: 708px;
-    left: 50%;
-    transform: translateX(-50%);
+.obstacleBox {
+  position: relative;
+  width: 708px;
+  left: 50%;
+  transform: translateX(-50%);
 }
 .obstacle {
   position: absolute;
@@ -105,7 +121,7 @@
   transform: translateX(-50%);
 }
 .right {
-  left:85%;
+  left: 85%;
   transform: translateX(-50%);
 }
 
@@ -117,18 +133,36 @@
     top: 100vh;
   }
 }
+.iconeMenu {
+  width: 38px;
+  background-color: #fff;
+  border-radius: 10px;
+}
+
+.holderButtonTop {
+  z-index: 650;
+  display: flex;
+  padding-top: 25px;
+  justify-content: space-between;
+}
+
+.returnBtn {
+  padding-left: 90px;
+}
+.pauseBtn {
+  padding-right: 90px;
+}
 
 /*  Modale GameOver */
 .overlay {
- position: absolute;
- z-index: 2;
- top:0;
- bottom: 0;
- left: 0;
- right: 0;
- background-color: hsl(217.5,7.8%,80% , .8);
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: hsl(217.5, 7.8%, 80%, 0.8);
 }
-
 
 .gameOver {
   position: absolute;
@@ -138,28 +172,28 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  gap: 10px
+  gap: 10px;
 }
 
 .gameOver p {
-    font-size: 30px;
-    color: #fff;
-    border-radius: 7px;
-    padding: 20px 20px;
-    background-color: var(--blue-500);
+  font-size: 30px;
+  color: #fff;
+  border-radius: 7px;
+  padding: 20px 20px;
+  background-color: var(--blue-500);
 }
 
 .gameOver button {
   border-radius: 7px;
-  padding: 20px 10px
+  padding: 20px 10px;
 }
 
 .gameOver button:hover {
   background-color: var(--blue-300);
-  cursor:pointer;
+  cursor: pointer;
 }
 
-.gameWin{
+.gameWin {
   position: absolute;
   display: flex;
   flex-direction: column;
@@ -169,6 +203,7 @@
   transform: translate(-50%, -50%);
   gap: 10px;
   min-height: 350px;
+  max-width: 560px;
   text-align: center;
   color: #fff;
   border-radius: 7px;
