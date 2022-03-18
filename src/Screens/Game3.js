@@ -36,7 +36,8 @@ export default function Game3(props) {
 
   const place = ['left', 'middle', 'right'] // Emplacement obstacles ou lettres
   const [obstacle, setObstacle] = useState(null)
-  const obstacleRoute = [rocks, cat, tree, e]
+  // const obstacleRoute = [rocks, cat, tree, e]
+  const obstacleRoute = [e]
   const obstacleBureau = [prise, computer, extincteur, e]
 
   useEffect(() => {
