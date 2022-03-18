@@ -1,0 +1,56 @@
+.questionContainer {
+  position: relative;
+  margin: auto;
+  width: 60vw;
+  height: auto;
+  margin-top: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.detailContainer {
+  position: absolute;
+  right: 0;
+  top: -30px;
+  background-color: var(--green-400);
+  width: 300px;
+  height: 80%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.detailContainer h3,
+.reponseRivision {
+  text-align: center;
+}
+
+.buttonNextQ {
+  background-color: var(--blue-500);
+  color: var(--neutral-50);
+  margin-top: 2rem;
+  border: solid 2px transparent;
+}
+
+.buttonNextQ:hover {
+  background-color: var(--blue-300);
+  color: var(--blue-500);
+  border: solid 2px var(--blue-500);
+}
+
+.buttonNextA {
+  background-color: var(--blue-500);
+  color: var(--neutral-50);
+  border: solid 2px transparent;
+}
+
+.buttonNextA:hover {
+  background-color: var(--blue-300);
+  color: var(--blue-500);
+  border: solid 2px var(--blue-500);
+}
+
+.posProfil {
+}

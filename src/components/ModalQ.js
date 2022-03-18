@@ -65,6 +65,7 @@ const ModalQ = ({
       showTrue.style.visibility = 'visible'
     }
   }
+
   useEffect(() => {
     const quest = Math.floor(Math.random() * dataQuestion.length)
 

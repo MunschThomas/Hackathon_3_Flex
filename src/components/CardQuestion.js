@@ -1,13 +1,27 @@
 import React from 'react'
-
-function CardQuestion(props) {
+import { useState } from 'react'
+function CardQuestion({
+  id,
+  question,
+  image,
+  reponse,
+  correction,
+  setisVisible,
+  isVisible,
+}) {
   return (
     <>
       <div className='imgContainer'>
-        <img src={props.image} alt={props.question}></img>
+        <img src={image} alt={question}></img>
       </div>
       <div className='detailContainer'>
-        <p>{props.question}</p>
+        <h3>{question}</h3>
+        <button onClick={() => setisVisible(true)} className='buttonNextA'>
+          Réponse
+        </button>
+        <h3 className={`reponseRivision ${isVisible ? `visible` : `hidden`}`}>
+          {correction}
+        </h3>
       </div>
     </>
   )

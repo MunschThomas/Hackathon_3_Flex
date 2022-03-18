@@ -1,50 +1,50 @@
-import "./App.css";
+import './App.css'
 
-import { Route, Routes } from "react-router-dom";
-import { useState, useEffect } from "react";
-import { useAuth0 } from "@auth0/auth0-react";
-import Home from "./screens/Home";
-import Profil from "./screens/Profil";
-import Game3 from "./screens/Game3";
-import Revisions from "./screens/Revisions";
-import Loading from "./assets/loading.gif";
-import routeFina from "./assets/routeFina.png";
-import routeOffice from "./assets/routeOffice.png";
+import { Route, Routes } from 'react-router-dom'
+import { useState, useEffect } from 'react'
+import { useAuth0 } from '@auth0/auth0-react'
+import Home from './screens/Home'
+import Profil from './screens/Profil'
+import Game3 from './screens/Game'
+import Revisions from './screens/Revisions'
+import Loading from './assets/loading.gif'
+import routeFina from './assets/routeFina.png'
+import routeOffice from './assets/routeOffice.png'
 
 function App() {
-  const [loading, setLoading] = useState(true);
-  const { user, isLoading, isAuthenticated } = useAuth0();
-  const [score, setScore] = useState(0);
-  const [chooseGame, setChooseGame] = useState();
+  const [loading, setLoading] = useState(true)
+  const { user, isLoading, isAuthenticated } = useAuth0()
+  const [score, setScore] = useState(0)
+  const [chooseGame, setChooseGame] = useState()
 
   useEffect(() => {
-    setTimeout(() => setLoading(false), 500);
-  }, []);
+    setTimeout(() => setLoading(false), 500)
+  }, [])
 
   useEffect(() => {
     if (isAuthenticated) {
-      console.log("test");
-      let users = localStorage.getItem(user.name);
+      console.log('test')
+      let users = localStorage.getItem(user.name)
       if (!users) {
-        localStorage.setItem(user.name, score);
+        localStorage.setItem(user.name, score)
       } else {
-        setScore(users);
+        setScore(users)
       }
     }
-  }, [chooseGame, score, loading]);
+  }, [chooseGame, score, loading])
 
   if (loading) {
     return (
-      <div className="loadingContainer">
-        <img src={Loading} alt="loading" className="loading"></img>
+      <div className='loadingContainer'>
+        <img src={Loading} alt='loading' className='loading'></img>
       </div>
-    );
+    )
   }
   return isAuthenticated ? (
-    <div className="App">
+    <div className='App'>
       <Routes>
         <Route
-          path="/"
+          path='/'
           element={
             <Profil
               score={score}
@@ -56,7 +56,7 @@ function App() {
           }
         ></Route>
         <Route
-          path="/Profil"
+          path='/Profil'
           element={
             <Profil
               score={score}
@@ -68,7 +68,7 @@ function App() {
           }
         ></Route>
         <Route
-          path="Profil/game3"
+          path='Profil/game'
           element={
             <Game3
               score={score}
@@ -80,7 +80,7 @@ function App() {
           }
         ></Route>
         <Route
-          path="game3"
+          path='game'
           element={
             <Game3
               score={score}
@@ -91,17 +91,17 @@ function App() {
             />
           }
         ></Route>
-        <Route path="Profil/revisions" element={<Revisions />}></Route>
-        <Route path="revisions" element={<Revisions />}></Route>
+        <Route path='Profil/revisions' element={<Revisions />}></Route>
+        <Route path='revisions' element={<Revisions />}></Route>
       </Routes>
     </div>
   ) : (
     <>
       <Routes>
-        <Route path="/" element={<Home />}></Route>
+        <Route path='/' element={<Home />}></Route>
       </Routes>
     </>
-  );
+  )
 }
 
-export default App;
+export default App
