@@ -43,6 +43,20 @@ button {
   text-align: center;
 }
 
+.modalLoose{
+  background: var(--red-200);
+}
+.buttonLoosee{
+  background: var( --red-500);
+}
+.modalWin{
+  background: var(--green-200);
+}
+.buttonWin{
+  background: var(--green-500);
+}
+
+
 .wrapQuest h1 {
   color: white;
 }
@@ -53,9 +67,8 @@ button {
   color: white;
 }
 
-.visible {
-  visibility: visible;
-}
-.hidden {
-  visibility: hidden;
-}
+
+.visible {visibility: visible;}
+.hidden {visibility: hidden;}
+
+

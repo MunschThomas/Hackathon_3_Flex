@@ -97,7 +97,7 @@ const Profile = (props) => {
           {/* <div>Debloquez les 8 fondamenteux</div> */}
         </div>
         <div className="boutonContainer">
-          <Link to="game3" onClick={() => props.setChooseGame(0)}>
+          <Link to="game" onClick={() => props.setChooseGame(0)}>
             <div className="boutonPlay">
               <div className="playRoute"></div>
               <h3>Jouer</h3>
@@ -118,7 +118,7 @@ const Profile = (props) => {
               </p>
             </div>
           </Link>
-          <Link to="game3" onClick={() => props.setChooseGame(1)}>
+          <Link to="game" onClick={() => props.setChooseGame(1)}>
             <div className="boutonPlay">
               <div className="playBureau"></div>
               <h3>Jouer</h3>
