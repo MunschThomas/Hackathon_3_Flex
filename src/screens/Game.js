@@ -42,7 +42,9 @@ export default function Game(props) {
   const place = ["left", "middle", "right"]; // Emplacement obstacles ou lettres
   const [obstacle, setObstacle] = useState(null);
   const obstacleRoute = [rocks, cat, tree, e];
+  // const obstacleRoute = [e];
   const obstacleBureau = [prise, computer, extincteur, e];
+  // const obstacleBureau = [e];
 
   useEffect(() => {
     if (props.chooseGame === 0) {
@@ -69,6 +71,8 @@ export default function Game(props) {
 
   useEffect(() => {
     if (rightAnswer === 6 && handleFinalPopup) {
+      setPause(true);
+      document.getElementById("revealBlockDown");
       setIsWin(true);
       let oldScore = localStorage.getItem(user.name);
       let newScore = oldScore * 1 + 1;
@@ -414,8 +418,17 @@ export default function Game(props) {
         </div>
         {gameOver && (
           <div className="overlay">
-            <div className="gameOver">
-              <p>C'est perdu :( </p>
+            <div className="gameWin">
+              <FontAwesomeIcon
+                icon={faTrophy}
+                size="3x"
+                color="var(--green-500)"
+                className={"looseTrophy"}
+              />
+              <h2>
+                C'est perdu :( <br />
+                Essayez d'éviter les obstacles la prochaines fois !
+              </h2>
               <button onClick={() => launchNewGame()}>Relance la partie</button>
             </div>
             {/* <div className="overlay"></div> */}

@@ -13,7 +13,7 @@
   position: absolute;
   right: 0;
   top: -30px;
-  background-color: var(--green-400);
+  background-color: var(--green-500);
   width: 300px;
   height: 80%;
   padding: 20px;
@@ -30,7 +30,8 @@
 .buttonNextQ {
   background-color: var(--blue-500);
   color: var(--neutral-50);
-  margin-top: 2rem;
+  /* margin-top: 2rem; */
+  margin: 2rem 40px 0 40px;
   border: solid 2px transparent;
 }
 

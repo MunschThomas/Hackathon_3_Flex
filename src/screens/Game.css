@@ -167,7 +167,7 @@
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: hsl(217.5, 7.8%, 80%, 0.8);
+  background-color: hsl(218deg 18% 85% / 62%);
 }
 .gameOver {
   position: absolute;
@@ -229,19 +229,29 @@
   display: flex;
   justify-content: space-evenly;
 }
+.looseTrophy {
+  animation: broke 0.32s ease forwards 0.25s;
+  transform-origin: left bottom;
+}
 
 .winTrophy {
-  animation: bounce 0.7s ease infinite;
+  animation: bounce 0.35s ease infinite alternate;
 }
 
 @keyframes bounce {
   from {
     transform: translateY(-2px);
   }
-  50% {
+  to {
     transform: translateY(10px);
   }
+}
+
+@keyframes broke {
+  from {
+    transform: rotate(0);
+  }
   to {
-    transform: translateY(-2px);
+    transform: rotate(-90deg);
   }
 }

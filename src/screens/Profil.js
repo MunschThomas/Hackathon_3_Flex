@@ -101,7 +101,9 @@ const Profile = (props) => {
           <Link to="game" onClick={() => props.setChooseGame(0)}>
             <div className="boutonPlay">
               <div className="playRoute"></div>
+
               <h3>Jouer</h3>
+
               <h3>en déplacement</h3>
               <p>
                 Décors routier, évitez les obstacles, et récuperer les lettres

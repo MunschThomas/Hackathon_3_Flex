@@ -1,7 +1,7 @@
 .AnswerButton {
   min-width: 60%;
   display: flex;
-  gap:15px;
+  gap: 15px;
   flex-direction: row;
   align-items: center;
   justify-content: space-evenly;
@@ -19,19 +19,21 @@ button {
   border: 5px solid green;
 } */
 
-.btnVert:hover{
-  border: 5px solid var(--green-500);
+.btnVert:hover {
+  color: white !important;
+  background-color: var(--green-500);
 }
-.btnRouge:hover{
-  border: 5px solid var(--red-500);
-};
+.btnRouge:hover {
+  color: white !important;
+  background-color: var(--green-500);
+}
 
 .wrapper2 {
   z-index: 5000000;
   position: absolute;
- height: 100vh;
- width: 100vw;
-  background-color: #c8cbd0b0;
+  height: 100vh;
+  width: 100vw;
+  /* background-color: #c8cbd013; */
   margin: 0 auto;
   display: flex;
   align-items: center;
@@ -42,16 +44,18 @@ button {
   position: absolute;
   left: 50%;
   top: 50%;
-  z-index:5000000;
-  transform: translate(-50%,-50%);
+  z-index: 5000000;
+  transform: translate(-50%, -50%);
   width: 50%;
   min-width: 350px;
   max-width: 700px;
-  background-color: var(--neutral-700);
+  background-color: var(--blue-500);
+  /* background-color: var(--neutral-700); */
   /* box-shadow: 1rem 1rem 1rem rgb(0 0 0 / 15%); */
   /* opacity: .4; */
   margin: 0 auto;
-  height: 550px;
+  /* height: 550px; */
+  height: 300px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -62,26 +66,30 @@ button {
   opacity: 1;
 }
 
-.modalLoose{
-  background: var(--red-400);
+.modalLoose {
+  background: var(--red-500);
 }
-.buttonLoosee{
-  background: var( --red-500);
+.buttonLoosee {
+  background: var(--red-500);
 }
-.modalWin{
-  background: var(--green-600);
+.modalWin {
+  background: var(--green-500);
 }
-.buttonWin{
+.buttonWin {
   background: var(--green-500);
 }
 
-
-.wrapQuest h1, .wrapQuest h2 {
+.wrapQuest h1,
+.wrapQuest h2 {
   color: white;
   padding: 0 20px;
 }
 
+.ReavelCorrect {
+  position: absolute !important;
 
+  height: 220px !important;
+}
 
 #correctAnswerReavel,
 #wrongAnswerReavel {
@@ -89,9 +97,47 @@ button {
   color: white;
 }
 
+.visible {
+  visibility: visible;
+}
+.hidden {
+  visibility: hidden;
+}
 
+#reavelBlockDown {
+  padding-top: 10px;
+  z-index: 4900000;
+}
 
-.visible {visibility: visible;}
-.hidden {visibility: hidden;}
+@keyframes revealDown {
+  0% {
+    transform: translateY(-50%) translateX(-50%);
+    z-index: 4900000;
+    /* opacity: 0; */
+    top: 50%;
+  }
+  80% {
+    z-index: 5200000;
+    top: 50%;
+    /* opacity: 1; */
+  }
+  100% {
+    transform: translateY(-12%) translateX(-50%);
+    top: 50%;
+    z-index: 5200000;
+  }
+}
 
+@keyframes revealUp {
+  0% {
+    top: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    height: 300px;
+  }
 
+  100% {
+    top: 50%;
+    transform: translateY(-100%) translateX(-50%);
+    height: 200px;
+  }
+}
