@@ -218,3 +218,30 @@
   background-color: var(--blue-500);
   line-height: 1.5;
 }
+
+.gameWin button:hover {
+  color: white !important;
+  background-color: var(--green-500);
+}
+
+.gameWinButton {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.winTrophy {
+  animation: bounce 0.7s ease infinite;
+}
+
+@keyframes bounce {
+  from {
+    transform: translateY(-2px);
+  }
+  50% {
+    transform: translateY(10px);
+  }
+  to {
+    transform: translateY(-2px);
+  }
+}

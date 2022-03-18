@@ -1,5 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 import "./ModalQ.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrophy } from "@fortawesome/free-solid-svg-icons";
 
 const ModalQ = ({
   pause,

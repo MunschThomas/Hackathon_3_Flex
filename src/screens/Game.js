@@ -14,6 +14,9 @@ import e from "../assets/e.png";
 import { Link } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrophy } from "@fortawesome/free-solid-svg-icons";
+
 import ModalQ from "../components/ModalQ";
 import dataQuestions from "../assets/fondamentaux.json";
 
@@ -421,14 +424,22 @@ export default function Game(props) {
         {isWin && (
           <div className="overlay">
             <div className="gameWin">
+              <FontAwesomeIcon
+                icon={faTrophy}
+                size="3x"
+                color="var(--green-500)"
+                className={"winTrophy"}
+              />
               <h2>
                 C'est Gagné !!! <br /> Bravo vous avez réunis les 6 lettres
                 d'Enedis et maitrisez désormais un fondamental !
               </h2>
-              <Link to="../Profil">
-                <button>Retour</button>
-              </Link>
-              <button onClick={() => launchNewNew()}>Nouvelle partie</button>
+              <div className="gameWinButton">
+                <Link to="../Profil">
+                  <button>Retour</button>
+                </Link>
+                <button onClick={() => launchNewNew()}>Nouvelle partie</button>
+              </div>
             </div>
           </div>
         )}
