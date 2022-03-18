@@ -4,21 +4,24 @@
     "question": "1/4 des accidents du travail est du à une chute de plain pieds ?",
     "reponse": "Vrai",
     "incorrect_answers": "Faux",
-    "correction": "c'était vrai, soit 2 226jours d'arrêt de travail."
+    "correction": "c'était vrai, soit 2 226jours d'arrêt de travail.",
+    "image": "https://www.enedis.fr/sites/default/files/styles/image_full/public/images/2021-06/rh-enedis-nous-rejoindre.jpg?itok=3i0A2JaQ"
   },
   {
     "id": 1,
     "question": "Les accidents de plain pieds ne sont jamais fatals.",
     "reponse": "Faux",
     "incorrect_answers": "Vrai",
-    "correction": "c'était faux ! Les conséquences sont parfois fatals."
+    "correction": "c'était faux ! Les conséquences sont parfois fatals.",
+    "image": "https://www.enedis.fr/sites/default/files/styles/image_full/public/images/2022-01/offres-demploi-je-decouvre-les-metiers.jpg?itok=0PjQKgNy"
   },
   {
     "id": 2,
     "question": "Les accidents de plain pieds peuvent entrainer des dommages aux membres supérieurs",
     "reponse": "Vrai",
     "incorrect_answers": "Faux",
-    "correction": "c'était vrai, ils peuvent même toucher les cervicals."
+    "correction": "c'était vrai, ils peuvent même toucher les cervicals.",
+    "image":"https://www.enedis.fr/sites/default/files/styles/image_full/public/images/2022-01/garantir-la-qualite-du-reseau-electrique.jpg?itok=XppGt11L"
   },
 
   {
@@ -26,69 +29,79 @@
     "question": "En 2019, 17 accidents avaient pour cause le port d'EPI incomplet",
     "reponse": "Vrai",
     "incorrect_answers": "Faux",
-    "correction": "c'était vrai"
+    "correction": "c'était vrai",
+    "image":"https://www.enedis.fr/sites/default/files/styles/image_full/public/images/2022-01/gerer-le-reseau-de-distribution-electricite.jpg?itok=NtP7TgFw"
   },
   {
     "id": 4,
     "question": "La catégorie III des EPI, regroupe ceux destinés à la protection des lésions irreversibles ou mortelles",
     "reponse": "Vrai",
     "incorrect_answers": "Faux",
-    "correction": "c'était vrai ! Elle contient notamment: les casques d'électriciens, les gants TST..."
+    "correction": "c'était vrai ! Elle contient notamment: les casques d'électriciens, les gants TST...",
+    "image": "https://www.enedis.fr/sites/default/files/styles/image_full/public/images/2022-01/nous-connaitre-le-tarif-dacheminement-de-lelectricite.jpg?itok=MZILkoCD"
   },
   {
     "id": 5,
     "question": "Le port d'EPI n'est pas obligatoire lors des canicules",
     "reponse": "Faux",
     "incorrect_answers": "Vrai",
-    "correction": "c'était vrai, le port d'EPI quelque soit la météo est obligatoire."
+    "correction": "c'était vrai, le port d'EPI quelque soit la météo est obligatoire.",
+    "image":"https://www.enedis.fr/sites/default/files/styles/image_content_full/public/home/forum-virtuel-de-lemploi-2022.jpg?itok=DBh0o8Ln"
   },
   {
     "id": 6,
     "question": "Les accidents de la circulation représentent la première cause de mortalité au travail ",
     "reponse": "Vrai",
     "incorrect_answers": "Faux",
-    "correction": "c'était vrai. 406 personnes sont mortes en 2019."
+    "correction": "c'était vrai. 406 personnes sont mortes en 2019.",
+    "image":"https://www.enedis.fr/sites/default/files/styles/image_full/public/images/2021-01/enedis-implantation-picardie.jpg?itok=DBY0ZVux"
   },
   {
     "id": 7,
     "question": "En circulant à 50km/h, un choc contre un obstacle fixe correspond à une chute du 3ème étage",
     "reponse": "Vrai",
     "incorrect_answers": "Faux",
-    "correction": "c'était vrai! Et à 75km/h c'est du 7ème étage qu'on chute "
+    "correction": "c'était vrai! Et à 75km/h c'est du 7ème étage qu'on chute ",
+    "image":"https://phrnleng.rosselcdn.net/sites/default/files/dpistyles_v2/ena_16_9_extra_big/2020/01/06/node_31395/2975799/public/2020/01/06/B9722134124Z.1_20200106134511_000%2BGPUF82AAG.1-0.jpg?itok=2AFPPZ--1578315872"
   },
   {
     "id": 8,
     "question": "Le stationnement en marche arrière n'est pas obligatoire",
     "reponse": "Faux",
     "incorrect_answers": "Vrai",
-    "correction": "c'était faux, il EST obligatoire pour assurer un départ efficace."
+    "correction": "c'était faux, il EST obligatoire pour assurer un départ efficace.",
+    "image":"https://fr.topnews.media/wp-content/uploads/2022/02/enedis-voitures.PNG"
   },
   {
     "id": 9,
     "question": "Tous les accidents mortels ou graves de 2019 ont pour dénominateur commun un TOP non fait ou trop succintement",
     "reponse": "Vrai",
     "incorrect_answers": "Faux",
-    "correction": "c'était vrai!"
+    "correction": "c'était vrai!",
+    "image":"https://static.actu.fr/uploads/2020/02/img-6900-960x640.jpg"
   },
   {
     "id": 10,
     "question": "Les défaillances matérielles représentent 20% des causes d'accidents en 2019",
     "reponse": "Faux",
     "incorrect_answers": "Vrai",
-    "correction": "c'était faux ! Elles ne représentent que 3%, alors qu'un TOP deficiant en compte 50% !"
+    "correction": "c'était faux ! Elles ne représentent que 3%, alors qu'un TOP deficiant en compte 50% !",
+    "image":"https://www.enedis.fr/sites/default/files/styles/image_full/public/images/2022-01/enedis-le-projet-industriel-et-humain.jpg?itok=GpDdC5Uk"
   },
   {
     "id": 11,
     "question": "Avoir plus de la moitié de sont temps de travail en plein air, augmante la consommation d'alcool.",
     "reponse": "Vrai",
     "incorrect_answers": "Faux",
-    "correction": "c'était vrai!"
+    "correction": "c'était vrai!",
+    "image":"https://media.sudouest.fr/3983523/1000x500/isleenperigord-ac84f11e20c14ac4bfd04c2f8009e0a5-164944-ph0.jpg?v=1625229578"
   },
   {
     "id": 12,
     "question": "20 à 30 % des accidents professionnels, de l’absentéisme et des conflits interpersonnels sont provoqués par l’usage d’une substance psychoactive.",
     "reponse": "Vrai",
     "incorrect_answers": "Faux",
-    "correction": "c'était vrai!"
+    "correction": "c'était vrai!",
+    "image":"https://www.editions-legislatives.fr/media/news-npa/resized/650/687973-gettyimages-480652914.jpg"
   }
 ]
