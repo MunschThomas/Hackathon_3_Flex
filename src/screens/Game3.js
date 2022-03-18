@@ -9,16 +9,17 @@ import extincteur from "../assets/obstacle3_office.png";
 import persos from "../assets/persos.png";
 import perso_office from "../assets/persos_office.png";
 import buttonProfil from "../assets/buttonHomme.png";
-import buttonEnergie from "../assets/buttonEnergie.png";
-
 import e from "../assets/e.png";
 import { Link } from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react";
 
 import ModalQ from "../components/ModalQ";
 import dataQuestions from "../assets/fondamentaux.json";
 
 export default function Game3(props) {
   const decal = window.innerWidth / 4.5;
+  // Import données USER
+  const { user } = useAuth0();
 
   const [inGame, setIngame] = useState(true);
 
@@ -63,6 +64,9 @@ export default function Game3(props) {
   useEffect(() => {
     if (rightAnswer === 6) {
       setIsWin(true);
+      let oldScore = localStorage.getItem(user.name);
+      let newScore = oldScore * 1 + 1;
+      localStorage.setItem(user.name, newScore);
     }
     console.log(rightAnswer);
   }, [rightAnswer]);
