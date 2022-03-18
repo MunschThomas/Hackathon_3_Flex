@@ -108,15 +108,16 @@ const Profile = (props) => {
               </p>
             </div>
           </Link>
-          <div className="boutonPlay">
-            <div className="playReviser"></div>
-            <h3>Revisez</h3>
-            {/* <h3>les fondamentaux</h3> */}
-            <p>
-              Accedez au quiz avec des questions aléatoires pour s'entrainer
-            </p>
-          </div>
-
+          <Link to="revisions">
+            <div className="boutonPlay">
+              <div className="playReviser"></div>
+              <h3>Revisez</h3>
+              {/* <h3>les fondamentaux</h3> */}
+              <p>
+                Accedez au quiz avec des questions aléatoires pour s'entrainer
+              </p>
+            </div>
+          </Link>
           <Link to="game" onClick={() => props.setChooseGame(1)}>
             <div className="boutonPlay">
               <div className="playBureau"></div>

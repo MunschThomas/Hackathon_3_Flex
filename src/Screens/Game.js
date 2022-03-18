@@ -9,13 +9,22 @@ import computer from "../assets/obstacle2_office.png";
 import extincteur from "../assets/obstacle3_office.png";
 import persos from "../assets/persos.png";
 import perso_office from "../assets/persos_office.png";
+import buttonProfil from "../assets/buttonHomme.png";
 import e from "../assets/e.png";
 import { Link } from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react";
 
 import ModalQ from "../components/ModalQ";
 import dataQuestions from "../assets/fondamentaux.json";
 
 export default function Game3(props) {
+
+  const decal = window.innerWidth / 4.5;
+  // Import données USER
+  const { user } = useAuth0();
+
+  const [inGame, setIngame] = useState(true);
+
   const [gameOver, setGameOver] = useState(false); // State Colision
   const [pause, setPause] = useState(false); // State Pause ou lettre
   const [letter, setLetter] = useState(false); //check si tombe sur lettre
@@ -57,6 +66,9 @@ export default function Game3(props) {
   useEffect(() => {
     if (rightAnswer === 6) {
       setIsWin(true);
+      let oldScore = localStorage.getItem(user.name);
+      let newScore = oldScore * 1 + 1;
+      localStorage.setItem(user.name, newScore);
     }
     console.log(rightAnswer);
   }, [rightAnswer]);
@@ -69,6 +81,7 @@ export default function Game3(props) {
     setobstY(-100);
     setLetter(false);
     setIsBoom(false);
+
   };
 
   const launchNewNew = () => {
@@ -79,6 +92,7 @@ export default function Game3(props) {
     setobstY(-100);
     setLetter(false);
     setIsBoom(false);
+
   };
 
   // State coordonnées
@@ -289,6 +303,25 @@ export default function Game3(props) {
                 className={isBoom ? `explose ${placeBoom}` : "explose"}
               />
             )}
+
+            <div className="holderButtonTop">
+              <Link to="../Profil">
+                <div className="returnBtn">
+                  <img
+                    className="iconeMenu"
+                    src={buttonProfil}
+                    alt="retourProfil"
+                  />
+                </div>
+              </Link>
+              {/* <div className='pauseBtn' onClick={() => setPause(!pause)}>
+                <img
+                  className='iconeMenu'
+                  src={buttonEnergie}
+                  alt='retourProfil'
+                />
+              </div> */}
+            </div>
           </div>
           {/* // *********** CLARA LETTERS ******************/}
           <div className="enedisContainer">
@@ -354,20 +387,6 @@ export default function Game3(props) {
             </div>
           </div>
 
-          <Link to="../Profil">
-            <div>Retour au profil</div>
-          </Link>
-
-          {/* // *********** RAJOUTS THOM YAN UP******************/}
-          {!gameOver ? (
-            <>
-              {/* <div onClick={() => newLetter()}>CLIQUE ICI</div> */}
-              <div onClick={() => setPause(!pause)}>PAUSE</div>
-            </>
-          ) : (
-            <div>Victoire</div>
-          )}
-
           {/* // *********** RAJOUTS THOM YAN DOWN******************/}
           <img
             src={props.chooseGame === 0 ? persos : perso_office}
@@ -402,7 +421,9 @@ export default function Game3(props) {
                 C'est Gagné !!! <br /> Bravo vous avez réunis les 6 lettres
                 d'Enedis et maitrisez desormais un fondamental !
               </h2>
-              <button>Retour</button>
+              <Link to="../Profil">
+                <button>Retour</button>
+              </Link>
               <button onClick={() => launchNewNew()}>Nouvelle partie</button>
             </div>
           </div>

@@ -6,7 +6,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import Home from "./screens/Home";
 import Profil from "./screens/Profil";
 import Game from "./screens/Game";
-// import Game3 from "./screens/Game";
+import Revisions from "./screens/Revisions";
 import Loading from "./assets/loading.gif";
 import routeFina from "./assets/routeFina.png";
 import routeOffice from "./assets/routeOffice.png";
@@ -23,6 +23,7 @@ function App() {
 
   useEffect(() => {
     if (isAuthenticated) {
+      console.log("test");
       let users = localStorage.getItem(user.name);
       if (!users) {
         localStorage.setItem(user.name, score);
@@ -30,7 +31,7 @@ function App() {
         setScore(users);
       }
     }
-  }, [score]);
+  }, [chooseGame, score, loading]);
 
   if (loading) {
     return (
@@ -66,10 +67,6 @@ function App() {
             />
           }
         ></Route>
-        {/* <Route
-          path="/game3"
-          element={<Game2 score={score} setScore={setScore} />}
-        ></Route> */}
         <Route
           path="Profil/game"
           element={
@@ -94,6 +91,8 @@ function App() {
             />
           }
         ></Route>
+        <Route path="Profil/revisions" element={<Revisions />}></Route>
+        <Route path="revisions" element={<Revisions />}></Route>
       </Routes>
     </div>
   ) : (
