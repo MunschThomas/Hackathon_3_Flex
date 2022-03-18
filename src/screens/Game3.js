@@ -8,6 +8,7 @@ import computer from "../assets/obstacle2_office.png";
 import extincteur from "../assets/obstacle3_office.png";
 import persos from "../assets/persos.png";
 import perso_office from "../assets/persos_office.png";
+import buttonProfil from "../assets/buttonHomme.png";
 import e from "../assets/e.png";
 import { Link } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
@@ -255,6 +256,24 @@ export default function Game3(props) {
         >
           <div className="obstacleBox">
             {!pause && <div id="obstacle"></div>}
+            <div className="holderButtonTop">
+              <Link to="../Profil">
+                <div className="returnBtn">
+                  <img
+                    className="iconeMenu"
+                    src={buttonProfil}
+                    alt="retourProfil"
+                  />
+                </div>
+              </Link>
+              {/* <div className='pauseBtn' onClick={() => setPause(!pause)}>
+                <img
+                  className='iconeMenu'
+                  src={buttonEnergie}
+                  alt='retourProfil'
+                />
+              </div> */}
+            </div>
           </div>
           {/* // *********** CLARA LETTERS ******************/}
           <div className="enedisContainer">
@@ -319,19 +338,7 @@ export default function Game3(props) {
               </svg>
             </div>
           </div>
-
-          <Link to="../Profil">
-            <div>Retour au profil</div>
-          </Link>
-
-          {!gameOver ? (
-            <>
-              <div onClick={() => setPause(!pause)}>PAUSE</div>
-            </>
-          ) : (
-            <div>Victoire</div>
-          )}
-
+          {/* // *********** RAJOUTS THOM YAN DOWN******************/}
           <img
             src={props.chooseGame === 0 ? persos : perso_office}
             id="car"
