@@ -395,6 +395,7 @@ export default function Game3(props) {
             className="perso"
           />
           {pause && letter && (
+              <div className="overlay">
             <ModalQ
               pause={pause}
               dataQuestion={dataQuestion}
@@ -403,6 +404,7 @@ export default function Game3(props) {
               rightAnswer={rightAnswer}
               setRightAnswer={setRightAnswer}
             />
+            </div>
           )}
         </div>
         {gameOver && (
@@ -419,7 +421,7 @@ export default function Game3(props) {
             <div className="gameWin">
               <h2>
                 C'est Gagné !!! <br /> Bravo vous avez réunis les 6 lettres
-                d'Enedis et maitrisez desormais un fondamental !
+                d'Enedis et maitrisez désormais un fondamental !
               </h2>
               <Link to="../Profil">
                 <button>Retour</button>
