@@ -5,8 +5,8 @@ import { useState, useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import Home from "./screens/Home";
 import Profil from "./screens/Profil";
-import Game2 from "./screens/Game2";
-import Game3 from "./screens/Game3";
+import Game from "./screens/Game";
+// import Game3 from "./screens/Game";
 import Loading from "./assets/loading.gif";
 import routeFina from "./assets/routeFina.png";
 import routeOffice from "./assets/routeOffice.png";
@@ -71,9 +71,9 @@ function App() {
           element={<Game2 score={score} setScore={setScore} />}
         ></Route> */}
         <Route
-          path="Profil/game3"
+          path="Profil/game"
           element={
-            <Game3
+            <Game
               score={score}
               setScore={setScore}
               chooseGame={chooseGame}
@@ -83,9 +83,9 @@ function App() {
           }
         ></Route>
         <Route
-          path="game3"
+          path="game"
           element={
-            <Game3
+            <Game
               score={score}
               setScore={setScore}
               chooseGame={chooseGame}

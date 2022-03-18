@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import "./Game2.css";
+import "./Game.css";
+import boomImg from "../assets/boom.png";
 import rocks from "../assets/obstacle1.png";
 import tree from "../assets/obstacle2.png";
 import cat from "../assets/obstacle3.png";
@@ -15,34 +16,22 @@ import ModalQ from "../components/ModalQ";
 import dataQuestions from "../assets/fondamentaux.json";
 
 export default function Game3(props) {
-  const decal = window.innerWidth / 4.5;
-
-  const [inGame, setIngame] = useState(true);
-
   const [gameOver, setGameOver] = useState(false); // State Colision
   const [pause, setPause] = useState(false); // State Pause ou lettre
   const [letter, setLetter] = useState(false); //check si tombe sur lettre
 
-  
-  
   const [dataQuestion, setDataQuestion] = useState(dataQuestions);
-  
+
   const [isLoading, setIsLoading] = useState(false);
-  
-  
+
   /// **************
   /// SELECTION DES OBSTACLES ET PERSO SELON LE CHOIX PRECEDENT
   /// **************
-  
+
   const place = ["left", "middle", "right"]; // Emplacement obstacles ou lettres
   const [obstacle, setObstacle] = useState(null);
   const obstacleRoute = [rocks, cat, tree, e];
-  const obstacleBureau = [
-    prise,
-    computer,
-    extincteur,
-    e,
-  ];
+  const obstacleBureau = [prise, computer, extincteur, e];
 
   useEffect(() => {
     if (props.chooseGame === 0) {
@@ -75,27 +64,32 @@ export default function Game3(props) {
   // Lancement Nouvelle Partie
   const launchNewGame = () => {
     gameOver && rightAnswer > 0 && setRightAnswer(rightAnswer - 1);
-    !isWin &&  setPause(false);
+    !isWin && setPause(false);
     setGameOver(false);
     setobstY(-100);
     setLetter(false);
-  }; 
-  
+    setIsBoom(false);
+  };
+
   const launchNewNew = () => {
-    isWin && setRightAnswer(0)
+    isWin && setRightAnswer(0);
     setPause(false);
-    setIsWin(false)
+    setIsWin(false);
     setGameOver(false);
     setobstY(-100);
     setLetter(false);
-  }
- 
+    setIsBoom(false);
+  };
+
   // State coordonnées
   const [carPos, setCarPos] = useState(0);
   const [obstY, setobstY] = useState(-100);
 
   const [carX, setCarX] = useState(0);
   const [carY, setcarY] = useState(0);
+
+  const [isBoom, setIsBoom] = useState(false);
+  const [placeBoom, setPlaceBoom] = useState("");
 
   // Rècupe coordonées voiture
   useEffect(() => {
@@ -108,20 +102,20 @@ export default function Game3(props) {
     let car = document.getElementById("car");
 
     if (e.key === "ArrowLeft" && carPos >= 0) {
-      car.style.transform = `translateX(calc(${carPos - 230}px - 40%))`;
+      car.style.transform = `translateX(calc(${carPos - 230}px - 50%))`;
       setCarPos((carPos) => carPos - 230);
       setCarX((carX) => carX - 1);
     }
     if (e.key === "ArrowRight" && carPos <= 0) {
-      car.style.transform = `translateX(calc(${carPos + 230}px - 40%))`;
+      car.style.transform = `translateX(calc(${carPos + 230}px - 50%))`;
       setCarPos((carPos) => carPos + 230);
       setCarX((carX) => carX + 1);
     }
     if (e.key === "ArrowDown") {
-      car.style.transform = `translateX(calc(${carPos}px - 40%)) rotate(360deg)`;
+      car.style.transform = `translateX(calc(${carPos}px - 50%)) rotate(360deg)`;
     }
     if (e.key === "ArrowUp") {
-      car.style.transform = `translateX(calc(${carPos}px - 40%)) rotate(-360deg)`;
+      car.style.transform = `translateX(calc(${carPos}px - 50%)) rotate(-360deg)`;
     }
     if (e.key === " ") {
       launchNewGame();
@@ -136,11 +130,11 @@ export default function Game3(props) {
         let place = document
           .getElementsByClassName("obstacle")[0]
           .className.split(" ")[1];
-
+        console.log(place);
         setobstY(
           document.getElementsByClassName("obstacle")[0].getBoundingClientRect()
         );
-        if (obstY.bottom > carY - 150 && obstY.bottom < carY + 20) {
+        if (obstY.bottom > carY - 170 && obstY.bottom < carY + 20) {
           //Check lettre
           if (
             document
@@ -161,6 +155,14 @@ export default function Game3(props) {
             (carX === 1 && place === "right")
           ) {
             setGameOver(true);
+            setPlaceBoom(
+              document
+                .getElementsByClassName("obstacle")[0]
+                .className.split(" ")[1]
+            );
+            setIsBoom(true);
+            animBoom();
+            console.log(animBoom());
           }
         }
       }, 10);
@@ -213,6 +215,7 @@ export default function Game3(props) {
         {
           backgroundPositionY: 0,
         },
+
         {
           backgroundPositionY: "1445px",
         },
@@ -224,6 +227,26 @@ export default function Game3(props) {
         forwards: true,
       }
     );
+
+  let animBoom = () => {
+    document.getElementById("explose").animate(
+      [
+        {
+          opacity: 1,
+        },
+        {
+          opacity: 0,
+        },
+      ],
+      {
+        delay: 0,
+        duration: 800,
+        ease: "linear",
+        iterations: 3,
+        forwards: true,
+      }
+    );
+  };
 
   //Stopper animation Background
   useEffect(() => {
@@ -257,6 +280,15 @@ export default function Game3(props) {
         >
           <div className="obstacleBox">
             {!pause && <div id="obstacle"></div>}
+            {/* <img id="explose" src={boomImg} alt="explose" className={isBoom ? `explose boom ${placeBomm}` : "explose"}/>  */}
+            {isBoom && (
+              <img
+                id="explose"
+                src={boomImg}
+                alt="explose"
+                className={isBoom ? `explose ${placeBoom}` : "explose"}
+              />
+            )}
           </div>
           {/* // *********** CLARA LETTERS ******************/}
           <div className="enedisContainer">
@@ -321,7 +353,7 @@ export default function Game3(props) {
               </svg>
             </div>
           </div>
-          
+
           <Link to="../Profil">
             <div>Retour au profil</div>
           </Link>
@@ -337,7 +369,7 @@ export default function Game3(props) {
           )}
 
           {/* // *********** RAJOUTS THOM YAN DOWN******************/}
-        <img
+          <img
             src={props.chooseGame === 0 ? persos : perso_office}
             id="car"
             alt="perso"
@@ -373,7 +405,6 @@ export default function Game3(props) {
               <button>Retour</button>
               <button onClick={() => launchNewNew()}>Nouvelle partie</button>
             </div>
-          
           </div>
         )}
       </div>
