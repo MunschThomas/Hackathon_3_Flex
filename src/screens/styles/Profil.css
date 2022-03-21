@@ -213,5 +213,68 @@
   }
   .boutonContainer {
     flex-direction: column;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    width: auto;
+  }
+
+  .boutonContainer h3 {
+    font-size: 1.3rem;
+  }
+
+  .boutonPlay h3:nth-of-type(2) {
+    display: none;
+  }
+
+  .boutonContainer p {
+    font-size: 1rem;
+  }
+
+  .profilName {
+    font-size: 0.8rem;
+  }
+
+  .imgContainerProfil {
+    width: 113vw;
+    height: 3rem;
+  }
+
+  .imgContainerProfil img {
+    height: 20px;
+  }
+
+  .logOut h3 {
+    font-size: 0.8rem;
+  }
+  .holderScoreContainer {
+    height: 5rem;
+    margin-top: 55px;
+  }
+
+  .holderScoreContainer h3 {
+    display: none;
+  }
+
+  .boutonPlay {
+    height: 160px;
+    width: 70vw;
+    margin: 20px 0;
+  }
+
+  .playRoute,
+  .playBureau {
+    width: 80px;
+    top: -310px;
+  }
+
+  .playReviser {
+    height: 80px;
+  }
+
+  .boutonPlay h3,
+  .boutonRoute h3,
+  .boutonReviser h3 {
+    top: 90px;
   }
 }

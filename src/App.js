@@ -11,6 +11,7 @@ import Revisions from "./screens/Revisions";
 import Loading from "./assets/loading.gif";
 import routeFina from "./assets/routeFina.png";
 import routeOffice from "./assets/routeOffice.png";
+import routeOfficeMobile from "./assets/routeOfficeMobile.png";
 import routeFinaMobile from "./assets/routeFinaMobile.png";
 
 function App() {
@@ -53,6 +54,7 @@ function App() {
                 routeOffice={routeOffice}
                 routeFina={routeFina}
                 routeFinaMobile={routeFinaMobile}
+                routeOfficeMobile={routeOfficeMobile}
               />
             }
           ></Route>

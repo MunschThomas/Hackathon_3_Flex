@@ -42,49 +42,49 @@ const Profile = (props) => {
           <div className="scoreContainer">
             <FontAwesomeIcon
               icon={faTrophy}
-              size="3x"
+              size={window.innerWidth > 600 ? "3x" : "2x"}
               color="var(--neutral-600)"
               className={totalScore >= 1 ? "winIcon" : ""}
             />
             <FontAwesomeIcon
               icon={faTrophy}
-              size="3x"
+              size={window.innerWidth > 600 ? "3x" : "2x"}
               color="var(--neutral-600)"
               className={totalScore >= 2 ? "winIcon" : ""}
             />
             <FontAwesomeIcon
               icon={faTrophy}
-              size="3x"
+              size={window.innerWidth > 600 ? "3x" : "2x"}
               color="var(--neutral-600)"
               className={totalScore >= 3 ? "winIcon" : ""}
             />
             <FontAwesomeIcon
               icon={faTrophy}
-              size="3x"
+              size={window.innerWidth > 600 ? "3x" : "2x"}
               color="var(--neutral-600)"
               className={totalScore >= 4 ? "winIcon" : ""}
             />
             <FontAwesomeIcon
               icon={faTrophy}
-              size="3x"
+              size={window.innerWidth > 600 ? "3x" : "2x"}
               color="var(--neutral-600)"
               className={totalScore >= 5 ? "winIcon" : ""}
             />
             <FontAwesomeIcon
               icon={faTrophy}
-              size="3x"
+              size={window.innerWidth > 600 ? "3x" : "2x"}
               color="var(--neutral-600)"
               className={totalScore >= 6 ? "winIcon" : ""}
             />
             <FontAwesomeIcon
               icon={faTrophy}
-              size="3x"
+              size={window.innerWidth > 600 ? "3x" : "2x"}
               color="var(--neutral-600)"
               className={totalScore >= 7 ? "winIcon" : ""}
             />
             <FontAwesomeIcon
               icon={faTrophy}
-              size="3x"
+              size={window.innerWidth > 600 ? "3x" : "2x"}
               color="var(--neutral-600)"
               className={totalScore >= 8 ? "winIcon" : ""}
             />

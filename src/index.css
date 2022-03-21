@@ -150,9 +150,11 @@ button {
 }
 
 @media (max-width: 600px) {
-  body {
-    min-height: auto;
-    overflow-y: visible;
-    overflow-x: hidden;
+  h2 {
+    font-size: 1em;
+  }
+
+  button {
+    min-width: 100px;
   }
 }

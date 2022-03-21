@@ -264,4 +264,47 @@
     background-position: center;
     background-repeat-x: no-repeat;
   }
+  .iconeMenu {
+    position: absolute;
+    left: 20px;
+  }
+
+  .perso {
+    height: 100px;
+    min-width: auto;
+  }
+
+  .obstacle {
+    width: 50px;
+    min-width: 50px;
+  }
+
+  .explose {
+    position: absolute;
+    z-index: 1000000;
+    bottom: 70px;
+    width: 100px !important;
+  }
+
+  .left {
+    left: calc(50% - 80px);
+    transform: translateX(-50%);
+    /* transition-delay: 5s; */
+  }
+  .middle {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .right {
+    left: calc(50% + 80px);
+    transform: translateX(-50%);
+  }
+
+  .gameWin {
+    top: 40%;
+  }
+
+  .holderContainer {
+    height: 100vh;
+  }
 }

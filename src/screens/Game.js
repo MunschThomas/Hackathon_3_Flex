@@ -124,16 +124,20 @@ export default function Game(props) {
       (e.key === "ArrowLeft" || e.clientX < window.innerWidth / 2) &&
       carPos >= 0
     ) {
-      car.style.transform = `translateX(calc(${carPos - 230}px - 50%))`;
-      setCarPos((carPos) => carPos - 230);
+      car.style.transform = `translateX(calc(${
+        carPos - (window.innerWidth > 600 ? 230 : 80)
+      }px - 50%))`;
+      setCarPos((carPos) => carPos - (window.innerWidth > 600 ? 230 : 80));
       setCarX((carX) => carX - 1);
     }
     if (
       (e.key === "ArrowRight" || e.clientX > window.innerWidth / 2) &&
       carPos <= 0
     ) {
-      car.style.transform = `translateX(calc(${carPos + 230}px - 50%))`;
-      setCarPos((carPos) => carPos + 230);
+      car.style.transform = `translateX(calc(${
+        carPos + (window.innerWidth > 600 ? 230 : 80)
+      }px - 50%))`;
+      setCarPos((carPos) => carPos + (window.innerWidth > 600 ? 230 : 80));
       setCarX((carX) => carX + 1);
     }
     if (e.key === "ArrowDown") {
@@ -158,7 +162,10 @@ export default function Game(props) {
         setobstY(
           document.getElementsByClassName("obstacle")[0].getBoundingClientRect()
         );
-        if (obstY.bottom > carY - 170 && obstY.bottom < carY + 20) {
+        if (
+          obstY.bottom > carY - (window.innerWidth > 600 ? 170 : 100) &&
+          obstY.bottom < carY + 20
+        ) {
           //Check lettre
           if (
             document
@@ -280,7 +287,7 @@ export default function Game(props) {
       setPause(true);
     }
   }, [pause, gameOver]);
-  
+
   useEffect(() => {
     document.getElementById("road").focus();
   }, [pause]);
@@ -288,6 +295,8 @@ export default function Game(props) {
   useEffect(() => {
     document.getElementById("road").focus();
   }, [pause]);
+
+  console.log(window.innerWidth);
 
   return (
     <div>
@@ -305,11 +314,21 @@ export default function Game(props) {
           tabIndex="1"
           onKeyDown={(e) => setMove(e)}
           onClick={(e) => setMove(e)}
-          style={{
-            backgroundImage: `url(${
-              props.chooseGame === 0 ? props.routeFina : props.routeOffice
-            })`,
-          }}
+          style={
+            window.innerWidth > 600
+              ? {
+                  backgroundImage: `url(${
+                    props.chooseGame === 0 ? props.routeFina : props.routeOffice
+                  })`,
+                }
+              : {
+                  backgroundImage: `url(${
+                    props.chooseGame === 0
+                      ? props.routeFinaMobile
+                      : props.routeOfficeMobile
+                  })`,
+                }
+          }
         >
           <div className="obstacleBox">
             {!pause && <div id="obstacle"></div>}
