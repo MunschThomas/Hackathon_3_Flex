@@ -4,7 +4,7 @@
 
 Création d'un site internet pour Enedis rappelant les 8 fondamentaux sur la sécurité. 
 
-Site interactif et ludique sous forme d'un mini jeux (thème selon l'environnement de travail) basé sur un Endless runner avec un quizz regroupant des questions sur la sécurité. 
+Site interactif et ludique sous forme d'un mini-jeu (thème selon l'environnement de travail) basé sur un Endless runner avec un quizz regroupant des questions sur la sécurité. 
 
 Implantation d'un système d'authentification sécurisé grâce au package Auth0
 
