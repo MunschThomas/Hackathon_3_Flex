@@ -280,6 +280,10 @@ export default function Game(props) {
       setPause(true);
     }
   }, [pause, gameOver]);
+  
+  useEffect(() => {
+    document.getElementById("road").focus();
+  }, [pause]);
 
   return (
     <>
