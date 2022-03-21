@@ -1,3 +1,4 @@
+//***ADD TO AUTH0 :***
 // import { useAuth0 } from "@auth0/auth0-react";
 import React from "react";
 import { Link } from "react-router-dom";
@@ -12,13 +13,9 @@ const Profile = (props) => {
   const [totalScore, setTotalScore] = useState();
 
   useEffect(() => {
-    let users = localStorage.getItem(props.user.name);
+    let users = localStorage.getItem(props.user);
     setTotalScore(users);
   }, []);
-
-  if (props.isLoading) {
-    return;
-  }
 
   return (
     <>
@@ -26,22 +23,21 @@ const Profile = (props) => {
         <div className="imgContainerProfil">
           <img src={Logo} alt="logo Enedis"></img>
           <div className="logOut">
-            <Logout />
+            <Logout input={props.user} setInput={props.setInput} />
           </div>
           <div className="infoContainer">
-            <img src={props.user.picture} alt={props.user.name}></img>
-            <h3 className="profilName">{props.user.name}</h3>
+            {/* <img src={props.user.picture} alt={props.user.name}></img> */}
+            <h3 className="profilName">Bienvenue {props.user}</h3>
           </div>
         </div>
-        {/* <img src={user.picture} alt={user.name} />
-        <h2>{user.name}</h2>
-      <p>{user.email}</p> */}
         <div className="holderScoreContainer">
           {/* <h2>Votre score</h2> */}
           {totalScore === "8" ? (
             <h3>Felicitations ! Vous avez débloquer les 8 Fondamentaux</h3>
           ) : (
-            <h3>Vous avez débloquez {totalScore} fondamentaux!</h3>
+            <h3>
+              Vous avez débloquez {totalScore ? totalScore : "0"} fondamentaux!
+            </h3>
           )}
           <div className="scoreContainer">
             <FontAwesomeIcon
@@ -98,7 +94,7 @@ const Profile = (props) => {
           {/* <div>Debloquez les 8 fondamenteux</div> */}
         </div>
         <div className="boutonContainer">
-          <Link to="game" onClick={() => props.setChooseGame(0)}>
+          <Link to="../game" onClick={() => props.setChooseGame(0)}>
             <div className="boutonPlay">
               <div className="playRoute"></div>
 
@@ -115,13 +111,12 @@ const Profile = (props) => {
             <div className="boutonPlay">
               <div className="playReviser"></div>
               <h3>Revisez</h3>
-              {/* <h3>les fondamentaux</h3> */}
               <p>
-                Accedez au quiz avec des questions aléatoires pour s'entrainer
+                Accédez au quiz avec des questions aléatoires pour s'entrainer
               </p>
             </div>
           </Link>
-          <Link to="game" onClick={() => props.setChooseGame(1)}>
+          <Link to="/game" onClick={() => props.setChooseGame(1)}>
             <div className="boutonPlay">
               <div className="playBureau"></div>
               <h3>Jouer</h3>

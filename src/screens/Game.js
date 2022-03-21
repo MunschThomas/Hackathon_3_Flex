@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./Game.css";
 import boomImg from "../assets/boom.png";
 import rocks from "../assets/obstacle1.png";
@@ -124,12 +124,18 @@ export default function Game(props) {
   const setMove = (e) => {
     let car = document.getElementById("car");
 
-    if (e.key === "ArrowLeft" && carPos >= 0) {
+    if (
+      (e.key === "ArrowLeft" || e.clientX < window.innerWidth / 2) &&
+      carPos >= 0
+    ) {
       car.style.transform = `translateX(calc(${carPos - 230}px - 50%))`;
       setCarPos((carPos) => carPos - 230);
       setCarX((carX) => carX - 1);
     }
-    if (e.key === "ArrowRight" && carPos <= 0) {
+    if (
+      (e.key === "ArrowRight" || e.clientX > window.innerWidth / 2) &&
+      carPos <= 0
+    ) {
       car.style.transform = `translateX(calc(${carPos + 230}px - 50%))`;
       setCarPos((carPos) => carPos + 230);
       setCarX((carX) => carX + 1);
@@ -281,8 +287,12 @@ export default function Game(props) {
     }
   }, [pause, gameOver]);
 
+  useEffect(() => {
+    document.getElementById("road").focus();
+  }, [pause]);
+
   return (
-    <>
+    <div>
       <div
         id="test"
         className="containerGrille"
@@ -291,10 +301,12 @@ export default function Game(props) {
         }}
       >
         <div
+          autofocus="true"
           className="grille"
           id="road"
-          tabIndex="0"
+          tabIndex="1"
           onKeyDown={(e) => setMove(e)}
+          onClick={(e) => setMove(e)}
           style={{
             backgroundImage: `url(${
               props.chooseGame === 0 ? props.routeFina : props.routeOffice
@@ -312,7 +324,6 @@ export default function Game(props) {
                 className={isBoom ? `explose ${placeBoom}` : "explose"}
               />
             )}
-
             <div className="holderButtonTop">
               <Link to="../Profil">
                 <div className="returnBtn">
@@ -457,6 +468,6 @@ export default function Game(props) {
           </div>
         )}
       </div>
-    </>
+    </div>
   );
 }

@@ -1,16 +1,16 @@
-import React from 'react'
-import Login from '../components/Login'
-import './styles/Home.css'
-import background from '../assets/HomeBG.jpeg'
-import Logo from '../assets/logo_white.png'
+import React from "react";
+import Login from "../components/Login";
+import "./styles/Home.css";
+import background from "../assets/HomeBG.jpeg";
+import Logo from "../assets/logo_white.png";
 
-export default function Home() {
+export default function Home({ input, setInput }) {
   return (
-    <div className='Home' style={{ backgroundImage: `url(${background})` }}>
-      <div className='imgContainerHome'>
-        <img src={Logo} alt='logo Enedis'></img>
+    <div className="Home" style={{ backgroundImage: `url(${background})` }}>
+      <div className="imgContainerHome">
+        <img src={Logo} alt="logo Enedis"></img>
       </div>
-      <Login />
+      <Login input={input} setInput={setInput} />
     </div>
-  )
+  );
 }

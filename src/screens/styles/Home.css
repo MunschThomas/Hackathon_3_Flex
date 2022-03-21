@@ -11,17 +11,36 @@
   background-size: cover;
 }
 
-.buttonConnect {
+#buttonConnect {
   font-size: 30px;
-  width: 100%;
+  width: 230px;
   cursor: pointer;
   color: #fafafa;
   background-color: var(--green-500);
   border-radius: 10px;
   padding: 0.5em;
+  text-align: center;
+  border: solid 5px transparent;
 }
 
-.buttonConnect:hover {
+#buttonPseudo {
+  font-size: 30px;
+  width: 230px;
+  cursor: pointer;
+  color: #fafafa;
+  background-color: var(--blue-500);
+  border-radius: 10px;
+  padding: 0.5em;
+  margin-bottom: 1em;
+  text-align: center;
+  border: solid 5px transparent;
+}
+
+#buttonConnect:hover {
+  border: solid 5px var(--blue-300);
+}
+
+#buttonPseudo:hover {
   border: solid 5px var(--blue-300);
 }
 
