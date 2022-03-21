@@ -1,30 +1,33 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import '../src/assets/fonts/Enedis-Bold.woff'
+import React from "react";
+import ReactDOM from "react-dom";
+import "../src/assets/fonts/Enedis-Bold.woff";
 
-import { BrowserRouter } from 'react-router-dom'
-import './index.css'
-import App from './App'
-import reportWebVitals from './reportWebVitals'
-import { Auth0Provider } from '@auth0/auth0-react'
+import { BrowserRouter } from "react-router-dom";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+// ***ADD TO AUTH0 :***
+// import { Auth0Provider } from "@auth0/auth0-react";
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
+      {/* // ***ADD TO AUTH0 :***
       <Auth0Provider
         domain='dev-qtkc-hsd.eu.auth0.com'
         clientId='hSKzbkTq6SqfvPJe56f8thzRagYLwU5J'
         redirectUri={window.location.origin}
-      >
-        <App />
-      </Auth0Provider>
+      > */}
+      <App />
+      {/*// ***ADD TO AUTH0 :***
+       </Auth0Provider> */}
     </BrowserRouter>
   </React.StrictMode>,
 
-  document.getElementById('root')
-)
+  document.getElementById("root")
+);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals()
+reportWebVitals();

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./Game.css";
 import boomImg from "../assets/boom.png";
 import rocks from "../assets/obstacle1.png";
@@ -53,18 +53,15 @@ export default function Game(props) {
       setObstacle(obstacleBureau);
     }
   }, []);
-  // const [vitesse, setVitesse] = useState(null)
 
   //Attend chargement de la page
   useEffect(() => {
     setIsLoading(true);
-    // setVitesse(1000)
-    console.log("setvitesse");
   }, []);
 
   // State Victoire
   const [isWin, setIsWin] = useState(false); // State victoire !!!
-  const [rightAnswer, setRightAnswer] = useState(5); // Nombre de réponses justes
+  const [rightAnswer, setRightAnswer] = useState(0); // Nombre de réponses justes
 
   //Gagner LA Partie !!!!!!!
   const [handleFinalPopup, setHandleFinalPopup] = useState(false);
@@ -78,7 +75,6 @@ export default function Game(props) {
       let newScore = oldScore * 1 + 1;
       localStorage.setItem(user.name, newScore);
     }
-    console.log(rightAnswer);
   }, [handleFinalPopup, rightAnswer]);
 
   // Lancement Nouvelle Partie
@@ -124,12 +120,18 @@ export default function Game(props) {
   const setMove = (e) => {
     let car = document.getElementById("car");
 
-    if (e.key === "ArrowLeft" && carPos >= 0) {
+    if (
+      (e.key === "ArrowLeft" || e.clientX < window.innerWidth / 2) &&
+      carPos >= 0
+    ) {
       car.style.transform = `translateX(calc(${carPos - 230}px - 50%))`;
       setCarPos((carPos) => carPos - 230);
       setCarX((carX) => carX - 1);
     }
-    if (e.key === "ArrowRight" && carPos <= 0) {
+    if (
+      (e.key === "ArrowRight" || e.clientX > window.innerWidth / 2) &&
+      carPos <= 0
+    ) {
       car.style.transform = `translateX(calc(${carPos + 230}px - 50%))`;
       setCarPos((carPos) => carPos + 230);
       setCarX((carX) => carX + 1);
@@ -153,7 +155,6 @@ export default function Game(props) {
         let place = document
           .getElementsByClassName("obstacle")[0]
           .className.split(" ")[1];
-        console.log(place);
         setobstY(
           document.getElementsByClassName("obstacle")[0].getBoundingClientRect()
         );
@@ -185,7 +186,6 @@ export default function Game(props) {
             );
             setIsBoom(true);
             animBoom();
-            console.log(animBoom());
           }
         }
       }, 10);
@@ -285,8 +285,12 @@ export default function Game(props) {
     document.getElementById("road").focus();
   }, [pause]);
 
+  useEffect(() => {
+    document.getElementById("road").focus();
+  }, [pause]);
+
   return (
-    <>
+    <div>
       <div
         id="test"
         className="containerGrille"
@@ -295,10 +299,12 @@ export default function Game(props) {
         }}
       >
         <div
+          autofocus="true"
           className="grille"
           id="road"
-          tabIndex="0"
+          tabIndex="1"
           onKeyDown={(e) => setMove(e)}
+          onClick={(e) => setMove(e)}
           style={{
             backgroundImage: `url(${
               props.chooseGame === 0 ? props.routeFina : props.routeOffice
@@ -316,9 +322,8 @@ export default function Game(props) {
                 className={isBoom ? `explose ${placeBoom}` : "explose"}
               />
             )}
-
             <div className="holderButtonTop">
-              <Link to="../Profil">
+              <Link to="/Profil">
                 <div className="returnBtn">
                   <img
                     className="iconeMenu"
@@ -452,7 +457,7 @@ export default function Game(props) {
                 d'Enedis et maitrisez désormais un fondamental !
               </h2>
               <div className="gameWinButton">
-                <Link to="../Profil">
+                <Link to="/Profil">
                   <button>Retour</button>
                 </Link>
                 <button onClick={() => launchNewNew()}>Nouvelle partie</button>
@@ -461,6 +466,6 @@ export default function Game(props) {
           </div>
         )}
       </div>
-    </>
+    </div>
   );
 }

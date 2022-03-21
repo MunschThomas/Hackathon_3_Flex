@@ -50,6 +50,7 @@
   background-position: center;
   background-repeat-x: no-repeat;
   animation: background-defile 3s linear infinite forwards;
+  user-select: none;
 }
 
 #grilleLeft {
@@ -253,5 +254,14 @@
   }
   to {
     transform: rotate(-90deg);
+  }
+}
+
+@media (max-width: 600px) {
+  .grille {
+    max-height: auto;
+
+    background-position: center;
+    background-repeat-x: no-repeat;
   }
 }
