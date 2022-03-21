@@ -5,14 +5,14 @@ import dataQuestions from "../assets/fondamentaux.json";
 import CardQuestion from "../components/CardQuestion";
 
 import "./styles/Revisions.css";
-import { useAuth0 } from "@auth0/auth0-react";
+// import { useAuth0 } from "@auth0/auth0-react";
 import { useEffect, useState, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 function Revisions(props) {
   const navigate = useNavigate();
 
-  const { user } = useAuth0();
+  // const { user } = useAuth0();
   const [dataQuestion, setDataQuestion] = useState(dataQuestions);
   const [isAsked, setIsAsked] = useState([]);
   const [clk, setClk] = useState(false);
@@ -45,10 +45,10 @@ function Revisions(props) {
           <div className="logOut">
             <Logout />
           </div>
-          <div className="infoContainer" onClick={() => navigate("../Profil")}>
-            <img src={user.picture} alt={user.name}></img>
-            <p className="profilName">{user.name}</p>
-          </div>
+          <div
+            className="infoContainer"
+            onClick={() => navigate("../Profil")}
+          ></div>
         </div>
       </div>
 

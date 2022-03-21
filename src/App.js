@@ -19,37 +19,46 @@ function App() {
 
   const [chooseGame, setChooseGame] = useState();
   const [input, setInput] = useState("");
-
+  console.log("input", input);
   return (
     <div className="App">
-      <Routes>
-        <Route
-          path="/"
-          element={<Home input={input} setInput={setInput} />}
-        ></Route>
-        <Route
-          path="/Profil"
-          element={
-            <Profil
-              user={input}
-              setInput={setInput}
-              setChooseGame={setChooseGame}
-            />
-          }
-        ></Route>
-        <Route
-          path="/game"
-          element={
-            <Game
-              chooseGame={chooseGame}
-              routeOffice={routeOffice}
-              routeFina={routeFina}
-              routeFinaMobile={routeFinaMobile}
-            />
-          }
-        ></Route>
-        <Route path="/revisions" element={<Revisions />}></Route>
-      </Routes>
+      {!input ? (
+        <Routes>
+          <Route
+            path="/*"
+            element={<Home input={input} setInput={setInput} />}
+          ></Route>
+        </Routes>
+      ) : (
+        <Routes>
+          <Route
+            path="/"
+            element={<Home input={input} setInput={setInput} />}
+          ></Route>
+          <Route
+            path="/Profil"
+            element={
+              <Profil
+                user={input}
+                setInput={setInput}
+                setChooseGame={setChooseGame}
+              />
+            }
+          ></Route>
+          <Route
+            path="/game"
+            element={
+              <Game
+                chooseGame={chooseGame}
+                routeOffice={routeOffice}
+                routeFina={routeFina}
+                routeFinaMobile={routeFinaMobile}
+              />
+            }
+          ></Route>
+          <Route path="/revisions" element={<Revisions />}></Route>
+        </Routes>
+      )}
     </div>
   );
 }

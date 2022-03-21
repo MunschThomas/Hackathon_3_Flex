@@ -107,7 +107,7 @@ const Profile = (props) => {
               </p>
             </div>
           </Link>
-          <Link to="revisions">
+          <Link to="/revisions">
             <div className="boutonPlay">
               <div className="playReviser"></div>
               <h3>Revisez</h3>

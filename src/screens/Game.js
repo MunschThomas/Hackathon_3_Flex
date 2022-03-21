@@ -319,7 +319,7 @@ export default function Game(props) {
               />
             )}
             <div className="holderButtonTop">
-              <Link to="../Profil">
+              <Link to="/Profil">
                 <div className="returnBtn">
                   <img
                     className="iconeMenu"
@@ -453,7 +453,7 @@ export default function Game(props) {
                 d'Enedis et maitrisez désormais un fondamental !
               </h2>
               <div className="gameWinButton">
-                <Link to="../Profil">
+                <Link to="/Profil">
                   <button>Retour</button>
                 </Link>
                 <button onClick={() => launchNewNew()}>Nouvelle partie</button>
