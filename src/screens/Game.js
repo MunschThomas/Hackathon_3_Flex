@@ -64,7 +64,7 @@ export default function Game(props) {
 
   // State Victoire
   const [isWin, setIsWin] = useState(false); // State victoire !!!
-  const [rightAnswer, setRightAnswer] = useState(5); // Nombre de réponses justes
+  const [rightAnswer, setRightAnswer] = useState(0); // Nombre de réponses justes
 
   //Gagner LA Partie !!!!!!!
   const [handleFinalPopup, setHandleFinalPopup] = useState(false);
