@@ -15,6 +15,7 @@
   font-size: 30px;
   width: 100%;
   cursor: pointer;
+  color: #fafafa;
   background-color: var(--green-500);
   border-radius: 10px;
   padding: 0.5em;
@@ -25,6 +26,15 @@
 }
 
 .imgContainer {
+  top: 1rem;
+  width: 800px;
+  height: 500px;
+}
+.imgContainer img {
+  height: 100%;
+}
+
+.imgContainerHome {
   position: absolute;
   top: 1rem;
   width: 20vw;
