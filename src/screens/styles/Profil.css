@@ -206,3 +206,12 @@
   width: auto;
   height: 35px;
 }
+
+@media (max-width: 600px) {
+  .holderContainer {
+    height: auto;
+  }
+  .boutonContainer {
+    flex-direction: column;
+  }
+}

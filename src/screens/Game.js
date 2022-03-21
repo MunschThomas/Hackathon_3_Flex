@@ -53,13 +53,10 @@ export default function Game(props) {
       setObstacle(obstacleBureau);
     }
   }, []);
-  // const [vitesse, setVitesse] = useState(null)
 
   //Attend chargement de la page
   useEffect(() => {
     setIsLoading(true);
-    // setVitesse(1000)
-    console.log("setvitesse");
   }, []);
 
   // State Victoire
@@ -78,7 +75,6 @@ export default function Game(props) {
       let newScore = oldScore * 1 + 1;
       localStorage.setItem(user.name, newScore);
     }
-    console.log(rightAnswer);
   }, [handleFinalPopup, rightAnswer]);
 
   // Lancement Nouvelle Partie
@@ -159,7 +155,6 @@ export default function Game(props) {
         let place = document
           .getElementsByClassName("obstacle")[0]
           .className.split(" ")[1];
-        console.log(place);
         setobstY(
           document.getElementsByClassName("obstacle")[0].getBoundingClientRect()
         );
@@ -191,7 +186,6 @@ export default function Game(props) {
             );
             setIsBoom(true);
             animBoom();
-            console.log(animBoom());
           }
         }
       }, 10);

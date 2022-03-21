@@ -11,6 +11,7 @@ import Revisions from "./screens/Revisions";
 import Loading from "./assets/loading.gif";
 import routeFina from "./assets/routeFina.png";
 import routeOffice from "./assets/routeOffice.png";
+import routeFinaMobile from "./assets/routeFinaMobile.png";
 
 function App() {
   // ***ADD TO AUTH0 :***
@@ -43,6 +44,7 @@ function App() {
               chooseGame={chooseGame}
               routeOffice={routeOffice}
               routeFina={routeFina}
+              routeFinaMobile={routeFinaMobile}
             />
           }
         ></Route>
